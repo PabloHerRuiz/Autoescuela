@@ -21,7 +21,8 @@ class UserRepository
         $stmt->execute();
     }
     //UPDATE
-    public function updateUser($id,$nombre,$password,$rol){
+    public function updateUser($id, $nombre, $password, $rol)
+    {
         //hay que hacer un if con isset para cada post vaya comparando con su atributo y añadir por parametro solo pasar el objeto usuario
         $query = "UPDATE USER SET NOMBRE=:nombre,PASSWORD=:password,ROL=:rol WHERE IDUSER=:idUser";
         $stmt = $this->conexion->prepare($query);
@@ -31,12 +32,13 @@ class UserRepository
         $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
         $stmt->execute();
     }
-//LEER
-public function readUser($id){
-    $query = "SELECT * FROM USER WHERE IDUSER=:idUser";
-    $stmt = $this->conexion->prepare($query);
-    $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
-    $stmt->execute();
-}
+    //LEER
+    public function readUser($id)
+    {
+        $query = "SELECT * FROM USER WHERE IDUSER=:idUser";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }
 ?>
