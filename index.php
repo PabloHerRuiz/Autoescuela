@@ -7,9 +7,10 @@
 </head>
 <body>
     <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/autoescuela/database/db.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/database/db.php';
 
     db::abreConexion();
+    require_once $_SERVER["DOCUMENT_ROOT"] .'/Autoescuela/vistas/identificacion.php';
     ?>
 </body>
 </html>
