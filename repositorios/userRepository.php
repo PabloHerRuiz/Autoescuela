@@ -17,13 +17,13 @@ class UserRepository
         $stmt->bindParam(":password", $password, PDO::PARAM_STR);
         // $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
         $stmt->execute();
-        header("Location: http://virtual.localpablo.com/Autoescuela/vistas/identificacion.php");
+        header("Location: http://virtual.localpablo.com/Autoescuela/index.php");
 
     }
     //BORRAR
     public function deleteUser($id)
     {
-        $query = "DELETE USER WHERE IDUSER=:idUser";
+        $query = "DELETE FROM USER WHERE IDUSER=:idUser";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
         $stmt->execute();

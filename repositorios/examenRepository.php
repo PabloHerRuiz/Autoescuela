@@ -14,7 +14,7 @@ class ExamenRepository{
     }
     //BORRAR
     public function deleteExamen($idExamen){
-        $query= "DELETE EXAMEN WHERE IDEXAMEN=:idExamen";
+        $query= "DELETE FROM EXAMEN WHERE IDEXAMEN=:idExamen";
         $stmt= $this->conexion->prepare($query);
         $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
         $stmt->execute();

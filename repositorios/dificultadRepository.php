@@ -14,7 +14,7 @@ class DificultadRepository{
         
     //BORRAR
     public function deleteDificultad($idDificultad){
-        $query= "DELETE DIFICULTAD WHERE IDDIFICULTAD=:idDificultad";
+        $query= "DELETE FROM DIFICULTAD WHERE IDDIFICULTAD=:idDificultad";
         $stmt=$this->conexion->prepare($query);
         $stmt->bindParam(":idDificultad", $idDificultad, PDO::PARAM_INT);
         $stmt->execute();

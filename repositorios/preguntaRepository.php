@@ -21,7 +21,7 @@ class preguntaRepository{
 
     //BORRAR
     public function deletePregunta($idPregunta) {
-        $query = "DELETE PREGUNTA WHERE IDPREGUNTA=:idpregunta";
+        $query = "DELETE FROM PREGUNTA WHERE IDPREGUNTA=:idpregunta";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idpregunta", $idPregunta, PDO::PARAM_INT);
         $stmt->execute();

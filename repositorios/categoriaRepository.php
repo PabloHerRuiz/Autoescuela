@@ -14,7 +14,7 @@ class CategoriaRepository{
         
     //BORRAR
     public function deleteCategoria($idCategoria){
-        $query= "DELETE CATEGORIA WHERE IDCATEGORIA=:idCategoria";
+        $query= "DELETE FROM CATEGORIA WHERE IDCATEGORIA=:idCategoria";
         $stmt=$this->conexion->prepare($query);
         $stmt->bindParam(":idCategoria", $idCategoria, PDO::PARAM_INT);
         $stmt->execute();

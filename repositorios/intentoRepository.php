@@ -18,7 +18,7 @@ class IntentoRepository
     //BORRAR
     public function deleteIntento($idIntento)
     {
-        $query = "DELETE INTENTO WHERE IDINTENTO=:idIntento";
+        $query = "DELETE FROM INTENTO WHERE IDINTENTO=:idIntento";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idIntento", $idIntento, PDO::PARAM_INT);
         $stmt->execute();

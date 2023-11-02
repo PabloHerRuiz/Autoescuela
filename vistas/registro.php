@@ -15,7 +15,9 @@
     if (isset($_POST['registro'])) {
         $conn = db::abreConexion();
         $userRepository = new UserRepository($conn);
-        $userRepository->createUser($_POST['newUser'], $_POST['newPw']);
+        if (!empty($_POST['newUser']) && !empty($_POST['newPw'])) {
+            $userRepository->createUser($_POST['newUser'], $_POST['newPw']);
+        }
     }
     ?>
 
@@ -24,7 +26,7 @@
         <p><input type="text" name="newUser" placeholder="Nombre"></p>
         <p><input type="password" name="newPw" placeholder="Contraseña"></p>
         <p><input type="submit" name="registro" value="Registrar"></p>
-        <p><a href="http://virtual.localpablo.com/Autoescuela/vistas/identificacion.php">Ya tienes cuenta?</a></p>
+        <p><a href="http://virtual.localpablo.com/Autoescuela/index.php">Ya tienes cuenta?</a></p>
     </form>
 
 </body>
