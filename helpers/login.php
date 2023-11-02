@@ -18,7 +18,7 @@ class Login
 
         if ($stmt->rowCount() == 1) {
             // Inicio de sesión exitoso
-            $_SESSION['nombre'] = $nombre;
+            // $_SESSION['nombre'] = $nombre;
             return true;
         } else {
             // Credenciales incorrectas
