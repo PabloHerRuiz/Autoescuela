@@ -27,7 +27,7 @@
         $valida->Requerido('pass');
         //Comprobamos validacion
         if ($valida->ValidacionPasada()) {
-            if (!empty($_POST['nombre'] && !empty($_POST['pass']))) {
+            if (!empty($_POST['nombre']) && !empty($_POST['pass'])) {
                 if ($login->user_login($_POST['nombre'], $_POST['pass'])) {
                     header("location:http://virtual.localpablo.com/Autoescuela/vistas/prueba.php");
                 }
