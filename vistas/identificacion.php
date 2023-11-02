@@ -36,7 +36,7 @@
     }
 
     ?>
-    <form action="vistas/identificacion.php" method="post">
+    <form action="index.php" method="post">
         <h2>Login</h2>
         <p><input type="text" name="nombre" placeholder="Usuario"></p>
         <?= $valida->ImprimirError('nombre') ?>
