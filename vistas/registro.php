@@ -11,16 +11,19 @@
 <body>
     <?php
     require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/database/db.php';
-    db::abreConexion();
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/repositorios/userRepository.php';
+    if (isset($_POST['registro'])) {
+        $conn = db::abreConexion();
+        $userRepository = new UserRepository($conn);
+        $userRepository->createUser($_POST['newUser'], $_POST['newPw']);
+    }
     ?>
 
     <form enctype="multipart/form-data" action="registro.php" method="post">
         <h2>Registro de usuario:</h2>
         <p><input type="text" name="newUser" placeholder="Nombre"></p>
         <p><input type="password" name="newPw" placeholder="Contraseña"></p>
-        <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-        Enviar este fichero: <input name="fichero_usuario" type="file" />
-        <p><input type="submit" name="Enviar_fichero" value="Enviar fichero" /></p>
+        <p><input type="submit" name="registro" value="Registrar"></p>
         <p><a href="http://virtual.localpablo.com/Autoescuela/vistas/identificacion.php">Ya tienes cuenta?</a></p>
     </form>
 

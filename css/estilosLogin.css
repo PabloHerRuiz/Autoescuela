@@ -29,11 +29,9 @@ input[type="password"] {
     margin: 10px auto;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-input[type="text"]::placeholder,
-input[type="password"]::placeholder {
     padding-left: 10px;
 }
+
 
 input[type="submit"] {
     width: 100%;

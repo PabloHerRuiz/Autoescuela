@@ -23,19 +23,15 @@ h2 {
 }
 
 input[type="text"],
-input[type="password"],
-input[type="file"] {
+input[type="password"] {
     width: 100%;
     padding: 10px -0px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    padding-left: 10px;
 }
-input[type="text"]::placeholder,
-input[type="password"]::placeholder,
-input[type="file"]::placeholder {
-   padding-left: 10px;
-}
+
 
 input[type="submit"] {
     width: 100%;

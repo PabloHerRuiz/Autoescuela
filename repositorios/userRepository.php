@@ -1,16 +1,24 @@
 <?php
 class UserRepository
 {
-    private $conexion = db::abreConexion;
-    //CREAR
-    public function createUser($nombre, $password, $rol)
+    private $conexion;
+
+    function __construct($conexion)
     {
-        $query = "INSERT INTO USER (nombre,password,rol) values (:nombre,:password,:rol)";
+        $this->conexion = $conexion;
+    }
+
+    //CREAR
+    public function createUser($nombre, $password)
+    {
+        $query = "INSERT INTO USER (nombre,password) values (:nombre,:password)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
         $stmt->bindParam(":password", $password, PDO::PARAM_STR);
-        $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
+        // $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
         $stmt->execute();
+        header("Location: http://virtual.localpablo.com/Autoescuela/vistas/identificacion.php");
+
     }
     //BORRAR
     public function deleteUser($id)
