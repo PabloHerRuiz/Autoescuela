@@ -38,8 +38,8 @@ class Sesion
     //inicia y guarda el valor
     public function login_sesion($valor)
     {
-        iniciar_sesion();
-        guardar_sesion('usuario', $valor);
+        self::iniciar_sesion();
+        self::guardar_sesion('usuario', $valor);
     }
 
 }
