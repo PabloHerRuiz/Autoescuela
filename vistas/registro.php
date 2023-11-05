@@ -28,7 +28,6 @@
         <p><input type="text" name="newUser" placeholder="Nombre"></p>
         <p><input type="password" name="newPw" placeholder="Contraseña"></p>
         <p><input type="submit" name="registro" value="Registrar"></p>
-        <!-- <p><a href="http://virtual.localpablo.com/Autoescuela/index.php">Ya tienes cuenta?</a></p> -->
         <p><a href="index.php?menu=login">¿Ya tienes cuenta?</a></p>
         
     </form>
