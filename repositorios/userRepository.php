@@ -47,6 +47,8 @@ class UserRepository
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
         $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
 ?>
