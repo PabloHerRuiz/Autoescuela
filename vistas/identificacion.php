@@ -13,6 +13,8 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/database/db.php';
     require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/login.php';
     require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/validator.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] .'/Autoescuela/vistas/enruta.php';
+
 
     //creamos validator
     $valida = new Validator();
@@ -29,7 +31,8 @@
         if ($valida->ValidacionPasada()) {
             if (!empty($_POST['nombre']) && !empty($_POST['pass'])) {
                 if ($login->user_login($_POST['nombre'], $_POST['pass'])) {
-                    header("location:http://virtual.localpablo.com/Autoescuela/vistas/prueba.php");
+                    // header("location:http://virtual.localpablo.com/Autoescuela/vistas/prueba.php");
+                     header("location:?menu=prueba");
                 }
             }
         }
@@ -43,7 +46,9 @@
         <p><input type="password" name="pass" placeholder="Contraseña"></p>
         <?= $valida->ImprimirError('pass') ?>
         <p><input type="submit" name="login" value="Iniciar Sesion"></p>
-        <a href="http://virtual.localpablo.com/Autoescuela/vistas/registro.php">Create una cuenta</a>
+        <!-- <a href="http://virtual.localpablo.com/Autoescuela/vistas/registro.php">Create una cuenta</a> -->
+        <p><a href="index.php?menu=registro">¿Ya tienes cuenta?</a></p>
+
 
     </form>
 </body>
