@@ -16,7 +16,7 @@
         $conn = db::abreConexion();
         $userRepository = new UserRepository($conn);
         if (!empty($_POST['newUser']) && !empty($_POST['newPw'])) {
-            $userRepository->createUser($_POST['newUser'], $_POST['newPw']);
+            $userRepository->createUser($_POST['newUser'], md5($_POST['newPw']));
         }
     }
     ?>
