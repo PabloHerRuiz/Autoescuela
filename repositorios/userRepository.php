@@ -17,7 +17,7 @@ class UserRepository
         $stmt->bindParam(":password", $password, PDO::PARAM_STR);
         // $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
         $stmt->execute();
-        header("Location: http://virtual.localpablo.com/Autoescuela/index.php");
+        header("Location:?menu=login");
 
     }
     //BORRAR

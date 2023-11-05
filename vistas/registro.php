@@ -10,9 +10,7 @@
 
 <body>
     <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/database/db.php';
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/repositorios/userRepository.php';
-    require_once $_SERVER["DOCUMENT_ROOT"] .'/Autoescuela/vistas/enruta.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
 
     if (isset($_POST['registro'])) {
         $conn = db::abreConexion();
@@ -23,13 +21,13 @@
     }
     ?>
 
-    <form enctype="multipart/form-data" action="registro.php" method="post">
+    <form enctype="multipart/form-data" method="post">
         <h2>Registro de usuario:</h2>
         <p><input type="text" name="newUser" placeholder="Nombre"></p>
         <p><input type="password" name="newPw" placeholder="Contraseña"></p>
         <p><input type="submit" name="registro" value="Registrar"></p>
         <p><a href="index.php?menu=login">¿Ya tienes cuenta?</a></p>
-        
+
     </form>
 
 </body>

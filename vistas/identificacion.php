@@ -10,13 +10,7 @@
 
 <body>
     <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/database/db.php';
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/login.php';
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/validator.php';
-    require_once $_SERVER["DOCUMENT_ROOT"] .'/Autoescuela/vistas/enruta.php';
-    // require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
-
-
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
 
     //creamos validator
     $valida = new Validator();
@@ -33,7 +27,7 @@
         if ($valida->ValidacionPasada()) {
             if (!empty($_POST['nombre']) && !empty($_POST['pass'])) {
                 if ($login->user_login($_POST['nombre'], $_POST['pass'])) {
-                     header("location:?menu=prueba");
+                    header("location:?menu=prueba");
                 }
             }
         }
