@@ -10,7 +10,6 @@ class Login
     //funcion que inicia sesion del usuario
     public function user_login($nombre, $pass)
     {
-        $pass = md5($pass);
         $query = "SELECT * FROM USER WHERE nombre = :nombre and password=:pass";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);

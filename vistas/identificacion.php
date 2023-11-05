@@ -26,7 +26,7 @@
         //Comprobamos validacion
         if ($valida->ValidacionPasada()) {
             if (!empty($_POST['nombre']) && !empty($_POST['pass'])) {
-                if ($login->user_login($_POST['nombre'], $_POST['pass'])) {
+                if ($login->user_login($_POST['nombre'], md5($_POST['pass']))) {
                     header("location:?menu=prueba");
                 }
             }
