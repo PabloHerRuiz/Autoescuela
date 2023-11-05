@@ -11,5 +11,7 @@ foreach ($userData as $key => $value) {
     echo $key ."->". $value . "<br>";
 }
 
+// iniciar_sesion();
+// var_dump(leer_sesion('id')) ;
 
 ?>
