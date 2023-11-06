@@ -1,0 +1,85 @@
+.navbar {
+    background-color: #868686;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+body{
+    overflow: hidden;
+}
+
+.navbar img {
+    height: 100px;
+    width: 100px;
+}
+
+.navbar .icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar h1 {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .icons img {
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+textarea {
+    display: block;
+    width: 500px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+select {
+    display: inline-block; 
+    width: 250px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+#enunciado {
+    height: 150px;
+}
+#Examen {
+    float: right;
+    width: 50%;
+    padding: 20px;
+}
+
+#contenedor {
+    display: flex;
+    margin-top: 50px;
+}
+
+#preguntas-container {
+    border: 2px solid #ccc;
+    padding: 10px;
+    width: 50%; /* Puedes ajustar el ancho según tus preferencias */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#preguntas-container h2 {
+    margin: 0;
+}

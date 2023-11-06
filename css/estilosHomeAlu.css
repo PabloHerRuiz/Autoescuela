@@ -35,20 +35,20 @@ body{
 /* Estilos para el contenido */
 .content {
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente en la página */
-    align-items: center; /* Centra el contenido verticalmente en la página */
-    height: 100vh; /* Establece la altura del contenido al 100% del viewport */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
 }
 
 .button-container {
     display: flex;
-    flex-direction: column; /* Coloca los botones uno debajo del otro */
-    align-items: center; /* Centra los botones horizontalmente */
-    height: 20%;
+    flex-direction: column; 
+    align-items: center; 
+    height: 40%;
 }
 
 button {
     margin: 5px;
-    padding: 10px; /* Ajusta el padding para que tengan el mismo ancho */
-    width: 200px; /* Establece el ancho de los botones al 100% del contenedor */
+    padding: 10px; 
+    width: 200px; 
 }
