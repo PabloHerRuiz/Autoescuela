@@ -15,8 +15,12 @@ if (isset($_GET['menu'])) {
         require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/registro.php';
 
     }
-    if ($_GET['menu'] == "prueba") {
-        require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/prueba.php';
+    if ($_GET['menu'] == "home") {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/homeAlu.php';
+
+    }
+    if ($_GET['menu'] == "homeadmin") {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/homeAdmin.php';
 
     }
 }
