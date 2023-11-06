@@ -1,0 +1,54 @@
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #868686;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+body{
+    overflow: hidden;
+}
+
+.navbar img {
+    height: 100px;
+    width: 100px;
+}
+
+.navbar .icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar h1 {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .icons img {
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+}
+
+/* Estilos para el contenido */
+.content {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente en la página */
+    align-items: center; /* Centra el contenido verticalmente en la página */
+    height: 100vh; /* Establece la altura del contenido al 100% del viewport */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Coloca los botones uno debajo del otro */
+    align-items: center; /* Centra los botones horizontalmente */
+    height: 20%;
+}
+
+button {
+    margin: 5px;
+    padding: 10px; /* Ajusta el padding para que tengan el mismo ancho */
+    width: 200px; /* Establece el ancho de los botones al 100% del contenedor */
+}
