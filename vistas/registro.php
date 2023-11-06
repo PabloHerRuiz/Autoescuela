@@ -12,6 +12,8 @@
     <?php
     require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/database/db.php';
     require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/repositorios/userRepository.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] .'/Autoescuela/vistas/enruta.php';
+
     if (isset($_POST['registro'])) {
         $conn = db::abreConexion();
         $userRepository = new UserRepository($conn);
@@ -26,7 +28,8 @@
         <p><input type="text" name="newUser" placeholder="Nombre"></p>
         <p><input type="password" name="newPw" placeholder="Contraseña"></p>
         <p><input type="submit" name="registro" value="Registrar"></p>
-        <p><a href="http://virtual.localpablo.com/Autoescuela/index.php">Ya tienes cuenta?</a></p>
+        <p><a href="index.php?menu=login">¿Ya tienes cuenta?</a></p>
+        
     </form>
 
 </body>
