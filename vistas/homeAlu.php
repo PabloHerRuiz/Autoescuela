@@ -17,6 +17,7 @@
         <div class="icons">
             <img src="/Autoescuela/css/imagenes/usuario.png" alt="Perfil">
             <img src="/Autoescuela/css/imagenes/configuraciones.png" alt="Ajustes">
+            <img src="/Autoescuela/css/imagenes/cerrar-sesion.png" alt="Cierra sesion">
         </div>
     </div>
     <div class="content">
