@@ -4,19 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="http://virtual.localpablo.com/Autoescuela/css/estilosLogin.css">
 </head>
 
 <body>
     <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/database/db.php';
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/login.php';
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/validator.php';
-    require_once $_SERVER["DOCUMENT_ROOT"] .'/Autoescuela/vistas/enruta.php';
-    // require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
-
-
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
 
     //creamos validator
     $valida = new Validator();
@@ -32,8 +26,8 @@
         //Comprobamos validacion
         if ($valida->ValidacionPasada()) {
             if (!empty($_POST['nombre']) && !empty($_POST['pass'])) {
-                if ($login->user_login($_POST['nombre'], $_POST['pass'])) {
-                     header("location:?menu=prueba");
+                if ($login->user_login($_POST['nombre'], md5($_POST['pass']))) {
+                    header("location:?menu=prueba");
                 }
             }
         }

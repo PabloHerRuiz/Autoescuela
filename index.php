@@ -9,9 +9,7 @@
 
 <body>
     <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/enruta.php';
-    // require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
-    
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/enruta.php';    
     ?>
 </body>
 
