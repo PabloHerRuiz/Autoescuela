@@ -24,6 +24,7 @@
         <div class="button-container">
             <button>Test</button>
             <button>Test de Errores</button>
+            <button>Generar Test</button>
         </div>
     </div>
 </body>

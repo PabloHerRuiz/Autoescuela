@@ -23,5 +23,21 @@ if (isset($_GET['menu'])) {
         require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/homeAdmin.php';
 
     }
+    if ($_GET['menu'] == "crea") {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/creaPreguntas.php';
+
+    }
+    if ($_GET['menu'] == "modifica") {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/modificarPreg.php';
+
+    }
+    if ($_GET['menu'] == "listalu") {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/listadoAlu.php';
+
+    }
+    if ($_GET['menu'] == "alta") {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/darAlta.php';
+
+    }
 }
 ?>
