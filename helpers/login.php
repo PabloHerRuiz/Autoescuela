@@ -18,6 +18,9 @@ class Login
 
         if ($stmt->rowCount() == 1) {
             // Inicio de sesión exitoso
+            $userData= $stmt->fetch(PDO::FETCH_ASSOC);
+            $user = new User($userData["idUser"], $userData["nombre"],$userData["password"]);
+            Sesion::login_sesion($user);
             return true;
         } else {
             // Credenciales incorrectas

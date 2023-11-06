@@ -2,24 +2,24 @@
 class Sesion
 {
     //inicia sesion
-    public function iniciar_sesion()
+    public static function iniciar_sesion()
     {
         session_start();
     }
     //destruye la sesion
-    public function cerrar_session()
+    public static function cerrar_session()
     {
         session_destroy();
     }
 
     //guarda una sesion por su clave valor
-    public function guardar_sesion($clave, $valor)
+    public static function guardar_sesion($clave, $valor)
     {
         $_SESSION[$clave] = $valor;
     }
 
     //muestra un valor segun su clave
-    public function leer_sesion($clave)
+    public static function leer_sesion($clave)
     {
         if (isset($_SESSION[$clave])) {
             return $_SESSION[$clave];
@@ -30,16 +30,16 @@ class Sesion
     }
 
     //comprueba si existe valor
-    public function esta_logueado()
+    public static function esta_logueado()
     {
         return isset($_SESSION['usuario']);
     }
 
     //inicia y guarda el valor
-    public function login_sesion($valor)
+    public static function login_sesion($valor)
     {
-        iniciar_sesion();
-        guardar_sesion('usuario', $valor);
+        self::iniciar_sesion();
+        self::guardar_sesion('usuario', $valor);
     }
 
 }
