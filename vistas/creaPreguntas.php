@@ -3,8 +3,9 @@
 
 <head>
     <title>Crea Preguntas</title>
-    <link rel="stylesheet" href="http://virtual.localpablo.com/css/estiloscreaPreg.css">
+    <link rel="stylesheet" href="http://virtual.localpablo.com/css/estilosCreaPreg.css">
     <script src="http://virtual.localpablo.com/js/nav.js"></script>
+    <script src="http://virtual.localpablo.com/js/pregunta.js"></script>
 </head>
 
 <body>
@@ -27,15 +28,15 @@
         <div id="Examen">
             <select id="botonDif">
                 <option value="" disabled selected>Selecciona una dificultad</option>
-                <option value="Dificultad1">Fácil</option>
-                <option value="Dificultad2">Medio</option>
-                <option value="Dificultad3">Difícil</option>
+                <option value="1">Fácil</option>
+                <option value="2">Medio</option>
+                <option value="3">Difícil</option>
             </select>
             <select id="botonCat">
                 <option value="" disabled selected>Selecciona una categoría</option>
-                <option value="Categoria">Autopista</option>
-                <option value="Categoria">Coches</option>
-                <option value="Categoria">Motos</option>
+                <option value="1">Autopista</option>
+                <option value="2">Coches</option>
+                <option value="3">Motos</option>
             </select>
             <h1>Enunciado:</h1>
             <textarea id="enunciado" rows="5" cols="50"></textarea>
@@ -51,8 +52,9 @@
                 <option value="2">Opción 2</option>
                 <option value="3">Opción 3</option>
             </select>
-
+            <input type="file" value="imagen">
         </div>
+        <img id="guardar" src="/css/imagenes/guardar.png" alt="Guardar">
     </div>
 </body>
 

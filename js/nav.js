@@ -8,7 +8,6 @@ window.addEventListener("load", function () {
         fetch('http://virtual.localpablo.com/API/apiSesion.php')
          .then(x => x.json())
          .then(y=> {
-            console.log(y)
             if(y.respuesta=="OK"){
                 document.location="?menu=login";
             }
