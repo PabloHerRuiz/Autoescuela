@@ -75,7 +75,7 @@ select {
 #preguntas-container {
     border: 2px solid #ccc;
     padding: 10px;
-    width: 50%; /* Puedes ajustar el ancho según tus preferencias */
+    width: 50%; 
     text-align: center;
     box-sizing: border-box;
 }
@@ -86,4 +86,5 @@ select {
 .navbar .icons img:hover{
     border: 2px black solid ;
     padding: 2px;
+    cursor: pointer;
 }
