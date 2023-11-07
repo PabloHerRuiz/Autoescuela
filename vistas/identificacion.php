@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="http://virtual.localpablo.com/Autoescuela/css/estilosLogin.css">
+    <link rel="stylesheet" href="http://virtual.localpablo.com/css/estilosLogin.css">
 </head>
 
 <body>
     <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
     //creamos validator
-    $valida = new Validator();
+    $valida = new Validator() ;
     //comprobamos que se ha hecho el post de formulario
     if (isset($_POST['login'])) {
         

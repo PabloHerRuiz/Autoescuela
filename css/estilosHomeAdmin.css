@@ -51,3 +51,7 @@ button {
     padding: 10px; /* Ajusta el padding para que tengan el mismo ancho */
     width: 200px; /* Establece el ancho de los botones al 100% del contenedor */
 }
+.navbar .icons img:hover{
+    border: 2px black solid ;
+    padding: 2px;
+}

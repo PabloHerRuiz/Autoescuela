@@ -2,12 +2,12 @@
 function autocargador($class)
 {
     $dirs = [
-        $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/API/',
-        $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/clases/',
-        $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/database/',
-        $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/',
-        $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/repositorios/',
-        $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/vistas/'
+        $_SERVER["DOCUMENT_ROOT"] . '/API/',
+        $_SERVER["DOCUMENT_ROOT"] . '/clases/',
+        $_SERVER["DOCUMENT_ROOT"] . '/database/',
+        $_SERVER["DOCUMENT_ROOT"] . '/helpers/',
+        $_SERVER["DOCUMENT_ROOT"] . '/repositorios/',
+        $_SERVER["DOCUMENT_ROOT"] . '/vistas/'
     ];
 
     // Reemplaza los espacios de nombres con barras diagonales

@@ -83,3 +83,7 @@ select {
 #preguntas-container h2 {
     margin: 0;
 }
+.navbar .icons img:hover{
+    border: 2px black solid ;
+    padding: 2px;
+}

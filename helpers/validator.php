@@ -7,13 +7,12 @@ class Validator
     //Constructor
     public function __construct()
     {
-        $this->errores=array();
+        $this->errores = array();
     }
     public function Requerido($campo)
     {
-        if(!isset($_POST[$campo]) || empty($_POST[$campo]))
-        {
-            $this->errores[$campo]="El campo $campo no puede estar vacio";
+        if (!isset($_POST[$campo]) || empty($_POST[$campo])) {
+            $this->errores[$campo] = "El campo $campo no puede estar vacio";
             return false;
         }
         return true;
@@ -32,7 +31,8 @@ class Validator
     {
     }
     //funcion que devuelve un array de errores
-    public function getErrores(){
+    public function getErrores()
+    {
 
     }
 
@@ -40,27 +40,26 @@ class Validator
     public function getValor($campo)
     {
         return
-        isset($_POST[$campo])?$_POST[$campo]:'';
+            isset($_POST[$campo]) ? $_POST[$campo] : '';
     }
 
-    public function getSelected($campo,$valor)
+    public function getSelected($campo, $valor)
     {
         return
-        isset($_POST[$campo]) && $_POST[$campo]==$valor?'selected':'';
+            isset($_POST[$campo]) && $_POST[$campo] == $valor ? 'selected' : '';
     }
 
-    public function getChecked($campo,$valor)
+    public function getChecked($campo, $valor)
     {
         return
-        isset($_POST[$campo]) && $_POST[$campo]==$valor?'checked':'';
+            isset($_POST[$campo]) && $_POST[$campo] == $valor ? 'checked' : '';
     }
     //----
 
     //cuenta los errores del array
     public function ValidacionPasada()
     {
-        if(count($this->errores)!=0)
-        {
+        if (count($this->errores) != 0) {
             return false;
         }
         return true;
@@ -69,7 +68,7 @@ class Validator
     public function ImprimirError($campo)
     {
         return
-        isset($this->errores[$campo])?'<span class="error_mensaje">'.$this->errores[$campo].'</span>':'';
+            isset($this->errores[$campo]) ? '<span class="error_mensaje">' . $this->errores[$campo] . '</span>' : '';
     }
 
 }

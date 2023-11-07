@@ -94,3 +94,7 @@ h1 {
 #info-text p {
     margin: 5px 0;
 }
+.navbar .icons img:hover{
+    border: 2px black solid ;
+    padding: 2px;
+}

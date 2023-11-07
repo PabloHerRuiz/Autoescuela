@@ -4,21 +4,18 @@
 <head>
     <title>Modifica Preguntas</title>
     <!-- por ahora tiene los mismo estilos que creaPreguntas -->
-    <link rel="stylesheet" href="http://virtual.localpablo.com/Autoescuela/css/estiloscreaPreg.css">
+    <link rel="stylesheet" href="http://virtual.localpablo.com/css/estiloscreaPreg.css">
+    <script src="http://virtual.localpablo.com/js/nav.js"></script>
 </head>
 
 <body>
-    <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
-
-    ?>
     <div class="navbar">
-        <img src="/Autoescuela/css/imagenes/logo.png" alt="Logo">
+        <img src="/css/imagenes/logo.png" alt="Logo">
         <h1>Modifica Preguntas</h1>
         <div class="icons">
-            <img src="/Autoescuela/css/imagenes/usuario.png" alt="Perfil">
-            <img src="/Autoescuela/css/imagenes/configuraciones.png" alt="Ajustes">
-            <img src="/Autoescuela/css/imagenes/cerrar-sesion.png" alt="Cierra sesion">
+            <img id="perfil" src="/css/imagenes/usuario.png" alt="Perfil">
+            <img id="ajustes" src="/css/imagenes/configuraciones.png" alt="Ajustes">
+            <img id="cerrar" src="/css/imagenes/cerrar-sesion.png" alt="Cierra sesion">
         </div>
     </div>
 

@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://virtual.localpablo.com/Autoescuela/css/estilosRegistro.css">
+    <link rel="stylesheet" href="http://virtual.localpablo.com/css/estilosRegistro.css">
     <title>Registro de Usuario</title>
 </head>
 
 <body>
     <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
-
     if (isset($_POST['registro'])) {
         $conn = db::abreConexion();
         $userRepository = new UserRepository($conn);
