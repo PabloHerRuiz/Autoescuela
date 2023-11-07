@@ -25,22 +25,21 @@
     <div id="contenedor">
         <div id="preguntas-container">
             <h2>PREGUNTAS</h2>
-            
+
         </div>
 
         <div id="Examen">
-            <select id="botonCat">
-                <option value="" disabled selected>Selecciona una categoría</option>
-                <option value="Categoria">Autopista</option>
-                <option value="Categoria">Coches</option>
-                <option value="Categoria">Motos</option>
-            </select>
-
             <select id="botonDif">
                 <option value="" disabled selected>Selecciona una dificultad</option>
                 <option value="Dificultad1">Fácil</option>
                 <option value="Dificultad2">Medio</option>
                 <option value="Dificultad3">Difícil</option>
+            </select>
+            <select id="botonCat">
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option value="Categoria">Autopista</option>
+                <option value="Categoria">Coches</option>
+                <option value="Categoria">Motos</option>
             </select>
             <h1>Enunciado:</h1>
             <textarea id="enunciado" rows="5" cols="50"></textarea>

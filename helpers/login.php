@@ -8,18 +8,11 @@ class Login
         $this->conexion = $conexion;
     }
     //funcion que inicia sesion del usuario
-    public function user_login($nombre, $pass)
+    public function user_login($usuario)
     {
-        $query = "SELECT * FROM USER WHERE nombre = :nombre and password=:pass";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-        $stmt->bindParam(":pass", $pass, PDO::PARAM_STR);
-        $stmt->execute();
-
-        if ($stmt->rowCount() == 1) {
+        if ($usuario != null) {
             // Inicio de sesión exitoso
-            $userData= $stmt->fetch(PDO::FETCH_ASSOC);
-            $user = new User($userData["idUser"], $userData["nombre"],$userData["password"]);
+            $user = new User($usuario["idUser"], $usuario["nombre"],$usuario["password"]);
             Sesion::login_sesion($user);
             return true;
         } else {

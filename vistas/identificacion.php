@@ -11,11 +11,11 @@
 <body>
     <?php
     require_once $_SERVER["DOCUMENT_ROOT"] . '/Autoescuela/helpers/autocargador.php';
-
     //creamos validator
     $valida = new Validator();
     //comprobamos que se ha hecho el post de formulario
     if (isset($_POST['login'])) {
+        
         //creamos conexion y login
         $conn = db::abreConexion();
         $login = new login($conn);
@@ -26,7 +26,9 @@
         //Comprobamos validacion
         if ($valida->ValidacionPasada()) {
             if (!empty($_POST['nombre']) && !empty($_POST['pass'])) {
-                if ($login->user_login($_POST['nombre'], md5($_POST['pass']))) {
+                $userRepository = new UserRepository($conn);
+                $user=$userRepository->encuentra($_POST['nombre'],md5($_POST['pass']));
+                if ($login->user_login($user)) {
                     header("location:?menu=home");
                 }
             }

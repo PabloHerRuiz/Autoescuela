@@ -50,5 +50,18 @@ class UserRepository
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    //login
+    public function encuentra($nombre, $pass)
+    {
+        $query = "SELECT * FROM USER WHERE nombre = :nombre and password=:pass";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(":pass", $pass, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
 ?>
