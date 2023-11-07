@@ -4,7 +4,7 @@
 <head>
     <title>HOME</title>
     <link rel="stylesheet" href="http://virtual.localpablo.com/Autoescuela/css/estilosHomeAlu.css">
-    
+    <script src="http://virtual.localpablo.com/Autoescuela/js/nav.js"></script>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
             <button>Generar Test</button>
         </div>
     </div>
-    <script src="http://virtual.localpablo.com/Autoescuela/js/nav.js"></script>
+    
 </body>
 
 </html>
