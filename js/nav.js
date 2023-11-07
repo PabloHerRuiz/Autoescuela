@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
 
     imgCerrar.addEventListener("click", function() {
         // Realizar una solicitud al servidor para cerrar la sesión
-        fetch('http://virtual.localpablo.com/Autoescuela/API/apiSesion.php')
+        fetch('http://virtual.localpablo.com/API/apiSesion.php')
          .then(x => x.json())
          .then(y=> {
             console.log(y)
