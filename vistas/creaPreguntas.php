@@ -45,6 +45,12 @@
             <textarea id="opcion2" rows="3" cols="50" placeholder="Opción 2"></textarea>
             <textarea id="opcion3" rows="3" cols="50" placeholder="Opción 3"></textarea>
 
+            <select id="botonCor">
+                <option value="" disabled selected>Selecciona la correcta</option>
+                <option value="1">Opción 1</option>
+                <option value="2">Opción 2</option>
+                <option value="3">Opción 3</option>
+            </select>
 
         </div>
     </div>
