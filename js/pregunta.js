@@ -24,25 +24,30 @@ window.addEventListener("load", function () {
 
         console.log(pregunta);
 
-        var options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(pregunta)
-        };
-        var url = "http://virtual.localpablo.com/API/apiPregunta.php";
+        // var options = {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify(pregunta)
+        // };
+        // var url = "http://virtual.localpablo.com/API/apiPregunta.php";
 
-        console.log(options);
+        // console.log(options);
 
         // Realiza la solicitud POST
-        fetch(url, options)
-            .then(x => x.json)
+        fetch("http://virtual.localpablo.com/API/apiPregunta.php", {
+            method: "POST",
+            body: JSON.stringify(pregunta),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(x => x.json())
             .then(y => {
-                if (y.respuesta = "OK") {
-
-                    // document.location = "?menu=crea";
+                if (y.respuesta == "OK") {
+                    console.log("pregunta creada");
                 }
             })
     });
-})
+});
