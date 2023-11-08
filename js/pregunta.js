@@ -59,9 +59,42 @@ window.addEventListener("load", function () {
                     for (let i = 0; i < y.length; i++) {
                         var pregAux = pregunta.cloneNode(true);
                         pregAux.getElementsByClassName("enunciado")[0].innerHTML = y[i].enunciado;
+                        pregAux.setAttribute("data-id", y[i].id);
+
+                        (function (elemento) {
+                            elemento.addEventListener("click", function () {
+                                var id = elemento.dataset.id;
+                                fetch("http://virtual.localpablo.com/API/apiPregunta.php?id=" + id)
+                                    .then(x => x.json())
+                                    .then(y => {
+                                        dificultad.value=y[0].idDificultad;
+                                        categoria.value=y[0].idCategoria;
+                                        enunciado.value=y[0].enunciado;
+                                        op1.value=y[0].op1;
+                                        op2.value=y[0].op2;
+                                        op3.value=y[0].op3;
+                                        correcta.value=y[0].correcta;
+                                        //poner que al pulsar aparezca el boton de editar o algo que diga que se esta editando
+                                        // tambien habria que poner que el boton de guardar no guarde sino que modifique los campos
+                                    })
+
+
+
+
+                                
+                            });
+                        })(pregAux);
+
+
                         contenedorPreg.appendChild(pregAux);
                     }
                 })
         })
+
+
+
+
+
+
 
 });

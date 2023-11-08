@@ -43,9 +43,12 @@ class preguntaRepository
     {
         $query = "SELECT * FROM PREGUNTA WHERE IDPREGUNTA=:idpregunta";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(":pregunta", $idPregunta, PDO::PARAM_INT);
+        $stmt->bindParam(":idpregunta", $idPregunta, PDO::PARAM_INT);
         $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
+    
 
     //obtener todas las preguntas
     public function getAllPreg()

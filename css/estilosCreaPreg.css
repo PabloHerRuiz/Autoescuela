@@ -105,6 +105,10 @@ select {
     padding: 10px;
     margin: 10px;
   }
+ .pregunta:hover{
+    cursor: pointer;
+    border: 2px solid #000;
+ } 
 
   /* Estilos para la clase "cuadrado" */
   .cuadrado {

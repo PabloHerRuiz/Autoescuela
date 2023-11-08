@@ -14,21 +14,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '{"respuesta":"OK"}';
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (isset($_GET['id'])) {
+        $id=$_GET['id'];
+        $conn = db::abreconexion();
+        $preguntaRepository = new preguntaRepository($conn);
+        $preguntas = $preguntaRepository->readPregunta($id);
 
-    $conn = db::abreconexion();
-    $preguntaRepository = new preguntaRepository($conn);
-    $preguntas = $preguntaRepository->getAllPreg();
+        $preg = [];
+        foreach ($preguntas as $pregunta) {
+            $preg = [
+                "id" => $pregunta['idPregunta'],
+                "enunciado" => $pregunta['enunciado'],
+                "op1" => $pregunta['rep1'],
+                "op2" => $pregunta['rep2'],
+                "op3" => $pregunta['rep3'],
+                "idCategoria" => $pregunta['Categorias_idCategoria'],
+                "idDificultad" => $pregunta['Dificultad_idDificultad'],
+                "correcta" => $pregunta['correcta'],
+            ];
+            $pregs[] = $preg;
+        }
 
-    $preg = [];
-    foreach ($preguntas as $pregunta) {
-        $preg = [
-            "id" => $pregunta['idPregunta'],
-            "enunciado" => $pregunta['enunciado']
-        ];
-        $pregs[] = $preg;
+        header('Content-Type: application/json');
+        echo json_encode($pregs);
+    } else {
+        $conn = db::abreconexion();
+        $preguntaRepository = new preguntaRepository($conn);
+        $preguntas = $preguntaRepository->getAllPreg();
+
+        $preg = [];
+        foreach ($preguntas as $pregunta) {
+            $preg = [
+                "id" => $pregunta['idPregunta'],
+                "enunciado" => $pregunta['enunciado']
+            ];
+            $pregs[] = $preg;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($pregs);
     }
-
-    header('Content-Type: application/json');
-    echo json_encode($pregs);
 }
 ?>
