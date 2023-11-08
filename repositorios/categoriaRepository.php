@@ -36,5 +36,19 @@ class CategoriaRepository{
         $stmt->bindParam(":idCategoria", $idCategoria, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+
+//obtener todas las categorias
+public function getAllCat()
+{
+    $query = "SELECT * FROM CATEGORIAS";
+    $stmt = $this->conexion->prepare($query);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+
+
 }
 ?>

@@ -7,6 +7,7 @@
     <script src="http://virtual.localpablo.com/js/nav.js"></script>
     <script src="http://virtual.localpablo.com/js/pregunta.js"></script>
     <script src="http://virtual.localpablo.com/js/dificultad.js"></script>
+    <script src="http://virtual.localpablo.com/js/categoria.js"></script>
 </head>
 
 <body>
@@ -29,15 +30,9 @@
         <div id="Examen">
             <select id="botonDif">
                 <option value="" disabled selected>Selecciona una dificultad</option>
-                <option value="1">Fácil</option>
-                <option value="2">Medio</option>
-                <option value="3">Difícil</option>
             </select>
             <select id="botonCat">
                 <option value="" disabled selected>Selecciona una categoría</option>
-                <option value="1">Autopista</option>
-                <option value="2">Coches</option>
-                <option value="3">Motos</option>
             </select>
             <h1>Enunciado:</h1>
             <textarea id="enunciado" rows="5" cols="50"></textarea>
