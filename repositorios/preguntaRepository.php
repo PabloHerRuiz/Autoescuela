@@ -10,7 +10,7 @@ class preguntaRepository
     //CREAR
     public function createPregunta($rep1, $rep2, $rep3, $correcta, $enunciado, $idDificultad, $idCategoria)
     {
-        $query = "INSERT INTO PREGUNTA (rep1,rep2,rep3,correcta,enunciado,dificultad,categoria) values (:rep1,:rep2,:rep3,:correcta,:enunciado,:dificultad,:categoria)";
+        $query = "INSERT INTO PREGUNTA (rep1,rep2,rep3,correcta,enunciado,Dificultad_idDificultad,Categorias_idCategoria) values (:rep1,:rep2,:rep3,:correcta,:enunciado,:dificultad,:categoria)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":rep1", $rep1, PDO::PARAM_STR);
         $stmt->bindParam(":rep2", $rep2, PDO::PARAM_STR);

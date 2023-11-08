@@ -13,40 +13,33 @@ window.addEventListener("load", function () {
 
     imgGuardar.addEventListener("click", function () {
         var pregunta = {
-            dif: dificultad.value,
-            cat: categoria.value,
-            enun: enunciado.value,
-            op1: op1.value,
-            op2: op2.value,
-            op3: op3.value,
-            cor: correcta.value
+            "dif": dificultad.value,
+            "cat": categoria.value,
+            "enun": enunciado.value,
+            "op1": op1.value,
+            "op2": op2.value,
+            "op3": op3.value,
+            "cor": correcta.value
         };
 
         console.log(pregunta);
 
-        // var options = {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(pregunta)
-        // };
-        // var url = "http://virtual.localpablo.com/API/apiPregunta.php";
-
-        // console.log(options);
+        var preguntaJson=JSON.stringify(pregunta);
 
         // Realiza la solicitud POST
         fetch("http://virtual.localpablo.com/API/apiPregunta.php", {
             method: "POST",
-            body: JSON.stringify(pregunta),
+            body: preguntaJson,
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+               }
         })
-            .then(x => x.json())
+            .then(x => x.text())
             .then(y => {
                 if (y.respuesta == "OK") {
                     console.log("pregunta creada");
+                    document.location("?menu=crea");
                 }
             })
     });
