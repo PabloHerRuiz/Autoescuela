@@ -3,7 +3,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/helpers/autocargador.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtén los datos enviados en la solicitud POST
-    $datos = json_decode(file_get_contents("php://input"),true);
+    $datos = json_decode(file_get_contents("php://input"), true);
     var_dump($datos);
     if ($datos) {
         // Llama a la función createPregunta con los datos
@@ -13,5 +13,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Devuelve una respuesta
         echo '{"respuesta":"OK"}';
     }
+} else if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+    $conn = db::abreconexion();
+    $preguntaRepository = new preguntaRepository($conn);
+    $preguntas = $preguntaRepository->getAllPreg();
+
+    $preg = [];
+    foreach ($preguntas as $pregunta) {
+        $preg = [
+            "id" => $pregunta['idPregunta'],
+            "enunciado" => $pregunta['enunciado']
+        ];
+        $pregs[] = $preg;
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($pregs);
 }
 ?>

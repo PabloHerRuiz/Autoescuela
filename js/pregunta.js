@@ -24,7 +24,7 @@ window.addEventListener("load", function () {
 
         console.log(pregunta);
 
-        var preguntaJson=JSON.stringify(pregunta);
+        var preguntaJson = JSON.stringify(pregunta);
 
         // Realiza la solicitud POST
         fetch("http://virtual.localpablo.com/API/apiPregunta.php", {
@@ -33,14 +33,35 @@ window.addEventListener("load", function () {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-               }
+            }
         })
             .then(x => x.text())
             .then(y => {
                 if (y.respuesta == "OK") {
                     console.log("pregunta creada");
-                    document.location("?menu=crea");
+                    document.location = "?menu=crea";
                 }
             })
     });
+
+
+    //listado de preguntas:
+    var contenedorPreg = document.getElementById("preguntas-container");
+    fetch("http://virtual.localpablo.com/vistas/plantillas/listadoPreg.html")
+        .then(x => x.text())
+        .then(y => {
+            var contenedor = document.createElement("div");
+            contenedor.innerHTML = y;
+            var pregunta = contenedor.querySelector('.pregunta');
+            fetch("http://virtual.localpablo.com/API/apiPregunta.php")
+                .then(x => x.json())
+                .then(y => {
+                    for (let i = 0; i < y.length; i++) {
+                        var pregAux = pregunta.cloneNode(true);
+                        pregAux.getElementsByClassName("enunciado")[0].innerHTML = y[i].enunciado;
+                        contenedorPreg.appendChild(pregAux);
+                    }
+                })
+        })
+
 });

@@ -46,5 +46,16 @@ class preguntaRepository
         $stmt->bindParam(":pregunta", $idPregunta, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    //obtener todas las preguntas
+    public function getAllPreg()
+    {
+        $query = "SELECT * FROM PREGUNTA";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }
 ?>
