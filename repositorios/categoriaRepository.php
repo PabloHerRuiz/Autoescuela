@@ -1,6 +1,12 @@
 <?php
 class CategoriaRepository{
-    private $conexion = db::abreConexion;
+    private $conexion;
+
+    function __construct($conexion)
+    {
+        $this->conexion = $conexion;
+    }
+
 
     //CREAR
     public function createCategoria($idCategoria,$nombre){

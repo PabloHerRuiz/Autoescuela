@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="http://virtual.localpablo.com/css/estilosCreaPreg.css">
     <script src="http://virtual.localpablo.com/js/nav.js"></script>
     <script src="http://virtual.localpablo.com/js/pregunta.js"></script>
+    <script src="http://virtual.localpablo.com/js/dificultad.js"></script>
 </head>
 
 <body>
