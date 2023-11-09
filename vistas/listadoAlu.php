@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="/css/estilosListadoAlu.css">
     <script src="/js/nav.js"></script>
+    <script src="/js/user.js"></script>
 </head>
 
 <body>
@@ -31,7 +32,7 @@
                 <div id="cuadrado-interior"></div>
             </div>
             <div id="info-text">
-                <p>Nombre: <span class="nombre"></span></p>
+                <p>Nombre: <span class="nombreperfil"></span></p>
                 <p>Apellidos:<span></span></p>
                 <p>Nº de exámenes resueltos:<span></span></p>
                 <p>Promedio de aprobar:<span></span></p>
