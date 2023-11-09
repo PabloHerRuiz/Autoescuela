@@ -51,7 +51,7 @@
             <input type="file" value="imagen">
         </div>
         <div id="crud">
-            <img id="anadir" src="/css/imagenes/anadir.png" alt="Añadir">
+            <img id="anadir" src="/css/imagenes/anadir.png" title="vaciar las casillas"alt="Añadir">
             <img id="borrar" src="/css/imagenes/borrar.png" alt="Borrar">
             <img id="guardar" src="/css/imagenes/guardar.png" alt="Guardar">
             <img id="actualizar" src="/css/imagenes/actualizar.png" alt="Actualizar">
