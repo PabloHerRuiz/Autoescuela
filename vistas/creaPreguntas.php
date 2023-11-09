@@ -3,11 +3,11 @@
 
 <head>
     <title>Crea Preguntas</title>
-    <link rel="stylesheet" href="http://virtual.localpablo.com/css/estilosCreaPreg.css">
-    <script src="http://virtual.localpablo.com/js/nav.js"></script>
-    <script src="http://virtual.localpablo.com/js/pregunta.js"></script>
-    <script src="http://virtual.localpablo.com/js/dificultad.js"></script>
-    <script src="http://virtual.localpablo.com/js/categoria.js"></script>
+    <link rel="stylesheet" href="/css/estilosCreaPreg.css">
+    <script src="/js/nav.js"></script>
+    <script src="/js/pregunta.js"></script>
+    <script src="/js/dificultad.js"></script>
+    <script src="/js/categoria.js"></script>
 </head>
 
 <body>

@@ -4,8 +4,8 @@
 <head>
     <title>Listado Alumnos</title>
 
-    <link rel="stylesheet" href="http://virtual.localpablo.com/css/estilosListadoAlu.css">
-    <script src="http://virtual.localpablo.com/js/nav.js"></script>
+    <link rel="stylesheet" href="/css/estilosListadoAlu.css">
+    <script src="/js/nav.js"></script>
 </head>
 
 <body>
@@ -31,11 +31,11 @@
                 <div id="cuadrado-interior"></div>
             </div>
             <div id="info-text">
-                <p>Nombre:</p>
-                <p>Apellidos:</p>
-                <p>Nº de exámenes resueltos:</p>
-                <p>Promedio de aprobar:</p>
-                <p>Promedio de errores:</p>
+                <p>Nombre: <span class="nombre"></span></p>
+                <p>Apellidos:<span></span></p>
+                <p>Nº de exámenes resueltos:<span></span></p>
+                <p>Promedio de aprobar:<span></span></p>
+                <p>Promedio de errores:<span></span></p>
             </div>
         </div>
 

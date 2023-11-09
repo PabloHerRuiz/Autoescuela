@@ -3,8 +3,8 @@
 
 <head>
     <title>HOME</title>
-    <link rel="stylesheet" href="http://virtual.localpablo.com/css/estilosHomeAdmin.css">
-    <script src="http://virtual.localpablo.com/js/nav.js"></script>
+    <link rel="stylesheet" href="/css/estilosHomeAdmin.css">
+    <script src="/js/nav.js"></script>
 </head>
 
 <body>
