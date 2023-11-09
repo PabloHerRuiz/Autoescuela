@@ -80,6 +80,8 @@ select {
     width: 50%; 
     text-align: center;
     box-sizing: border-box;
+    height: 600px;
+    overflow-y: auto; 
 }
 
 #preguntas-container h2 {

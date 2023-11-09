@@ -47,7 +47,8 @@ window.addEventListener("load", function () {
             .then(x => x.text())
             .then(y => {
 
-                document.location = "?menu=crea";
+                // document.location = "?menu=crea";
+                ActualizaListado();
                 console.log("pregunta creada");
 
             })
@@ -56,51 +57,71 @@ window.addEventListener("load", function () {
 
     //listado de preguntas:
 
-    var contenedorPreg = document.getElementById("preguntas-container");
-    fetch("http://virtual.localpablo.com/vistas/plantillas/listadoPreg.html")
-        .then(x => x.text())
-        .then(y => {
-            var contenedor = document.createElement("div");
-            contenedor.innerHTML = y;
-            var pregunta = contenedor.querySelector('.pregunta');
-            fetch("http://virtual.localpablo.com/API/apiPregunta.php")
-                .then(x => x.json())
-                .then(y => {
-                    for (let i = 0; i < y.length; i++) {
-                        var pregAux = pregunta.cloneNode(true);
-                        pregAux.getElementsByClassName("enunciado")[0].innerHTML = y[i].enunciado;
-                        pregAux.setAttribute("data-id", y[i].id);
+    function ActualizaListado() {
 
-                        (function (elemento) {
-                            elemento.addEventListener("click", function () {
-                                var id = elemento.dataset.id;
-                                fetch("http://virtual.localpablo.com/API/apiPregunta.php?id=" + id)
-                                    .then(x => x.json())
-                                    .then(y => {
-                                        //mostrar y ocultar botones
-                                        imgGuardar.style.display = "none";
-                                        imgActualizar.style.display = "";
-                                        imgBorrar.style.display = "";
+        // Borra los elementos existentes dentro de contenedorPreg
+        var contenedorPreg = document.getElementById("preguntas-container");
 
-                                        //dar los values
-                                        idPreg.value = id;
-                                        dificultad.value = y[0].idDificultad;
-                                        categoria.value = y[0].idCategoria;
-                                        enunciado.value = y[0].enunciado;
-                                        op1.value = y[0].op1;
-                                        op2.value = y[0].op2;
-                                        op3.value = y[0].op3;
-                                        correcta.value = y[0].correcta;
-                                    })
-                            });
-                        })(pregAux);
+        // Obtén el elemento h2 dentro de contenedorPreg
+        var h2 = contenedorPreg.querySelector("h2");
+
+        while (contenedorPreg.firstChild) {
+            contenedorPreg.removeChild(contenedorPreg.firstChild);
+        }
+
+        // Vuelve a agregar el elemento h2
+        contenedorPreg.appendChild(h2);
+
+        fetch("http://virtual.localpablo.com/vistas/plantillas/listadoPreg.html")
+            .then(x => x.text())
+            .then(y => {
+                var contenedor = document.createElement("div");
+                contenedor.innerHTML = y;
+                var pregunta = contenedor.querySelector('.pregunta');
+                fetch("http://virtual.localpablo.com/API/apiPregunta.php")
+                    .then(x => x.json())
+                    .then(y => {
+                        for (let i = 0; i < y.length; i++) {
+                            var pregAux = pregunta.cloneNode(true);
+                            pregAux.getElementsByClassName("enunciado")[0].innerHTML = y[i].enunciado;
+                            pregAux.setAttribute("data-id", y[i].id);
+
+                            (function (elemento) {
+                                elemento.addEventListener("click", function () {
+                                    var id = elemento.dataset.id;
+                                    fetch("http://virtual.localpablo.com/API/apiPregunta.php?id=" + id)
+                                        .then(x => x.json())
+                                        .then(y => {
+                                            //mostrar y ocultar botones
+                                            imgGuardar.style.display = "none";
+                                            imgActualizar.style.display = "";
+                                            imgBorrar.style.display = "";
+
+                                            //dar los values
+                                            idPreg.value = id;
+                                            dificultad.value = y[0].idDificultad;
+                                            categoria.value = y[0].idCategoria;
+                                            enunciado.value = y[0].enunciado;
+                                            op1.value = y[0].op1;
+                                            op2.value = y[0].op2;
+                                            op3.value = y[0].op3;
+                                            correcta.value = y[0].correcta;
+                                        })
+                                });
+                            })(pregAux);
 
 
-                        contenedorPreg.appendChild(idPreg);
-                        contenedorPreg.appendChild(pregAux);
-                    }
-                })
-        })
+                            contenedorPreg.appendChild(idPreg);
+                            contenedorPreg.appendChild(pregAux);
+                        }
+                    })
+            })
+        limpiarTest();
+    }
+
+    ActualizaListado();
+
+
 
     //ACTUALIZAR
 
@@ -132,7 +153,8 @@ window.addEventListener("load", function () {
         })
             .then(x => x.text())
             .then(y => {
-                document.location = "?menu=crea";
+                // document.location = "?menu=crea";
+                ActualizaListado();
                 console.log("pregunta actualizada");
             })
     });
@@ -146,18 +168,10 @@ window.addEventListener("load", function () {
         imgBorrar.style.display = "none";
 
         //todo a 0
-        dificultad.value = "";
-        categoria.value = "";
-        enunciado.value = "";
-        op1.value = "";
-        op2.value = "";
-        op3.value = "";
-        correcta.value = "";
+        limpiarTest();
     });
 
     //BORRAR
-
-
 
     imgBorrar.addEventListener("click", function () {
         var borrar = document.querySelector(".id").value;
@@ -179,12 +193,25 @@ window.addEventListener("load", function () {
             .then(x => x.text())
             .then(y => {
 
-                document.location = "?menu=crea";
+                // document.location = "?menu=crea";
+                ActualizaListado();
                 console.log("pregunta borrada");
 
             })
     });
 
+    //que cuando se actualice borre o guarde todo se vuelva en blanco
+
+    //poner a 0
+    function limpiarTest() {
+        dificultad.value = "";
+        categoria.value = "";
+        enunciado.value = "";
+        op1.value = "";
+        op2.value = "";
+        op3.value = "";
+        correcta.value = "";
+    }
 
 
 });
