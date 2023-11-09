@@ -39,6 +39,17 @@ class UserRepository
         $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    //update roles
+    public function updateUserRol($id,$rol)
+    {
+        $query = "UPDATE USER SET ROL=:rol WHERE IDUSER=:idUser";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
+        $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
     //LEER
     public function readUser($id)
     {
@@ -54,6 +65,15 @@ class UserRepository
     public function getAllUser()
     {
         $query = "SELECT * FROM USER";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function getAllUserNoRol()
+    {
+        $query = "SELECT * FROM USER WHERE ROL IS NULL";
         $stmt = $this->conexion->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

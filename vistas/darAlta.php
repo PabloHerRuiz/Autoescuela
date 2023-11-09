@@ -4,8 +4,9 @@
 <head>
     <title>Dar Alta Alumnos</title>
 
-    <link rel="stylesheet" href="/css/estilosAlta.css">
+    <link rel="stylesheet" href="/css/estilosCreaPreg.css">
     <script src="/js/nav.js"></script>
+    <script src="/js/user.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
     </div>
 
     <div id="contenedor">
-        <div id="preguntas-container">
+        <div id="alumnos-container">
             <h2>ALUMNOS</h2>
 
         </div>
@@ -31,11 +32,13 @@
                 <div id="cuadrado-interior"></div>
             </div>
             <div id="info-text">
-                <p>Nombre:</p>
+                <p>Nombre: <span class="nombreperfil"></span></p>
                 <p>Apellidos:</p>
-                <button>Alumno</button>
-                <button>Profesor</button>
-                <button>Admin</button>
+                <div class="botones-roles">
+                    <button id="rolAlu">Alumno</button>
+                    <button id="rolProf">Profesor</button>
+                    <button id="rolAdmin">Admin</button>
+                </div>
             </div>
         </div>
 

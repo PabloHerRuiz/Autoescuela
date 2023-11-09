@@ -2,9 +2,20 @@ window.addEventListener("load", function () {
     //contenido
     var nombrePerfil = document.querySelector(".nombreperfil");
     var idAlu = document.createElement("span");
+    var info = document.getElementById("info-container");
+    var btnAlu = document.getElementById("rolAlu");
+    var btnProf = document.getElementById("rolProf");
+    var btnAdmin = document.getElementById("rolAdmin");
 
     //funcionalidad
     idAlu.classList.add("id");
+    info.style.display = "none";
+
+    // Obtener la URL actual
+    var url = new URL(window.location.href);
+
+    // Obtener el valor del parámetro 'id'
+    var menu = url.searchParams.get("menu");
 
     //listado
     function ActualizaListado() {
@@ -25,11 +36,11 @@ window.addEventListener("load", function () {
         fetch("http://virtual.localpablo.com/vistas/plantillas/listadoAlu.html")
             .then(x => x.text())
             .then(y => {
-                
+
                 var contenedor = document.createElement("div");
                 contenedor.innerHTML = y;
                 var alumno = contenedor.querySelector('.alumno');
-                fetch("http://virtual.localpablo.com/API/apiUser.php")
+                fetch("http://virtual.localpablo.com/API/apiUser.php?menu=" + menu)
                     .then(x => x.json())
                     .then(y => {
                         console.log(y);
@@ -44,7 +55,9 @@ window.addEventListener("load", function () {
                                     fetch("http://virtual.localpablo.com/API/apiUser.php?id=" + id)
                                         .then(x => x.json())
                                         .then(y => {
+                                            info.style.display = "";
                                             nombrePerfil.textContent = y[0].nombre;
+                                            nombrePerfil.value = id;
                                         })
                                 });
                             })(aluAux);
@@ -56,10 +69,52 @@ window.addEventListener("load", function () {
                     })
             })
     }
-
     ActualizaListado();
 
 
+    //botones roles
+
+    //boton de alumno
+    btnAlu.addEventListener("click", function () {
+        idR = nombrePerfil.value;
+        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=alumno&id=" + idR,
+            {
+                method: "PUT"
+            })
+            .then(x => x.text())
+            .then(y => {
+                console.log("rol de alumno");
+            })
+        ActualizaListado();
+    })
+
+    //boton de profesor
+    btnProf.addEventListener("click", function () {
+        idR = nombrePerfil.value;
+        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=profesor&id=" + idR,
+        {
+            method: "PUT"
+        })
+            .then(x => x.text())
+            .then(y => {
+                console.log("rol de profesor");
+            })
+        ActualizaListado();
+    })
+
+    //boton de admin
+    btnAdmin.addEventListener("click", function () {
+        idR = nombrePerfil.value;
+        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=admin&id=" + idR,
+        {
+            method: "PUT"
+        })
+            .then(x => x.text())
+            .then(y => {
+                console.log("rol de admin");
+            })
+        ActualizaListado();
+    })
 
 
 });
