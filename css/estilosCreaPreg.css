@@ -6,7 +6,7 @@
     min-height: 20%;
 }
 
-body{
+body {
     overflow: hidden;
     min-height: 100vh;
 }
@@ -49,8 +49,9 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 select {
-    display: inline-block; 
+    display: inline-block;
     width: 250px;
     padding: 10px;
     margin-right: 10px;
@@ -62,6 +63,7 @@ select {
 #enunciado {
     height: 150px;
 }
+
 #Examen {
     float: right;
     width: 50%;
@@ -77,27 +79,30 @@ select {
 #preguntas-container {
     border: 2px solid #ccc;
     padding: 10px;
-    width: 50%; 
+    width: 50%;
     text-align: center;
     box-sizing: border-box;
     height: 600px;
-    overflow-y: auto; 
+    overflow-y: auto;
 }
 
 #preguntas-container h2 {
     margin: 0;
 }
-.navbar .icons img:hover{
-    border: 2px black solid ;
+
+.navbar .icons img:hover {
+    border: 2px black solid;
     padding: 2px;
     cursor: pointer;
 }
-#contenedor img{
+
+#contenedor img {
     width: 75px;
     height: 75px;
 }
-#contenedor img:hover{
-    border: 2px black solid ;
+
+#contenedor img:hover {
+    border: 2px black solid;
     padding: 2px;
     cursor: pointer;
 }
@@ -108,34 +113,36 @@ select {
     border: 1px solid #ddd;
     padding: 10px;
     margin: 10px;
-    
-  }
- .pregunta:hover{
+
+}
+
+.pregunta:hover {
     cursor: pointer;
     border: 2px solid #000;
- } 
+}
 
-  /* Estilos para la clase "cuadrado" */
-  .cuadrado {
+/* Estilos para la clase "cuadrado" */
+.cuadrado {
     width: 20px;
     height: 20px;
     background-color: #0074d9;
     display: inline-block;
     margin-right: 10px;
-  }
+}
 
-  /* Estilos para la clase "enunciado" */
-  .enunciado {
+/* Estilos para la clase "enunciado" */
+.enunciado {
     font-weight: bold;
     color: #333;
-  }
+}
 
-  /*ESTILOS CRUD*/
-  #crud {
+/*ESTILOS CRUD*/
+#crud {
     display: flex;
-    
-  }
-  #crud img {
+
+}
+
+#crud img {
     margin-right: 10px;
 
-  }
+}
