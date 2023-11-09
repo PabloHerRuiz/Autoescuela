@@ -124,3 +124,13 @@ select {
     font-weight: bold;
     color: #333;
   }
+
+  /*ESTILOS CRUD*/
+  #crud {
+    display: flex;
+    
+  }
+  #crud img {
+    margin-right: 10px;
+
+  }
