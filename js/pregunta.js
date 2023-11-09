@@ -18,6 +18,8 @@ window.addEventListener("load", function () {
     imgActualizar.style.display = "none";
     imgBorrar.style.display = "none";
 
+    //GUARDAR
+
     imgGuardar.addEventListener("click", function () {
         var pregunta = {
             "dif": dificultad.value,
@@ -44,15 +46,16 @@ window.addEventListener("load", function () {
         })
             .then(x => x.text())
             .then(y => {
-                if (y.respuesta == "OK") {
-                    console.log("pregunta creada");
-                    document.location = "?menu=crea";
-                }
+
+                document.location = "?menu=crea";
+                console.log("pregunta creada");
+
             })
     });
 
 
     //listado de preguntas:
+
     var contenedorPreg = document.getElementById("preguntas-container");
     fetch("http://virtual.localpablo.com/vistas/plantillas/listadoPreg.html")
         .then(x => x.text())
@@ -80,7 +83,7 @@ window.addEventListener("load", function () {
                                         imgBorrar.style.display = "";
 
                                         //dar los values
-                                        idPreg.value=id;
+                                        idPreg.value = id;
                                         dificultad.value = y[0].idDificultad;
                                         categoria.value = y[0].idCategoria;
                                         enunciado.value = y[0].enunciado;
@@ -88,8 +91,6 @@ window.addEventListener("load", function () {
                                         op2.value = y[0].op2;
                                         op3.value = y[0].op3;
                                         correcta.value = y[0].correcta;
-                                        //poner que al pulsar aparezca el boton de editar o algo que diga que se esta editando
-                                        // tambien habria que poner que el boton de guardar no guarde sino que modifique los campos
                                     })
                             });
                         })(pregAux);
@@ -101,9 +102,10 @@ window.addEventListener("load", function () {
                 })
         })
 
+    //ACTUALIZAR
 
     imgActualizar.addEventListener("click", function () {
-        id=document.querySelector(".id").value;
+        id = document.querySelector(".id").value;
         var pregunta = {
             "id": id,
             "dif": dificultad.value,
@@ -130,11 +132,58 @@ window.addEventListener("load", function () {
         })
             .then(x => x.text())
             .then(y => {
-                    document.location = "?menu=crea";
-                    console.log("pregunta actualizada");
+                document.location = "?menu=crea";
+                console.log("pregunta actualizada");
             })
     });
 
+    //AGREGAR
+
+    imgAgregar.addEventListener("click", function () {
+        //visibilidad
+        imgGuardar.style.display = "";
+        imgActualizar.style.display = "none";
+        imgBorrar.style.display = "none";
+
+        //todo a 0
+        dificultad.value = "";
+        categoria.value = "";
+        enunciado.value = "";
+        op1.value = "";
+        op2.value = "";
+        op3.value = "";
+        correcta.value = "";
+    });
+
+    //BORRAR
+
+
+
+    imgBorrar.addEventListener("click", function () {
+        var borrar = document.querySelector(".id").value;
+
+        var idBorrar = {
+            "id": borrar
+        };
+
+        var idJSON = JSON.stringify(idBorrar);
+        // Realiza la solicitud DELETE
+        fetch("http://virtual.localpablo.com/API/apiPregunta.php", {
+            method: "DELETE",
+            body: idJSON,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(x => x.text())
+            .then(y => {
+
+                document.location = "?menu=crea";
+                console.log("pregunta borrada");
+
+            })
+    });
 
 
 

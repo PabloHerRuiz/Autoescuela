@@ -3,11 +3,12 @@
     color: #fff;
     display: flex;
     justify-content: space-between;
-    
+    min-height: 20%;
 }
 
 body{
     overflow: hidden;
+    min-height: 100vh;
 }
 
 .navbar img {
@@ -70,6 +71,7 @@ select {
 #contenedor {
     display: flex;
     margin-top: 50px;
+    min-height: 80%;
 }
 
 #preguntas-container {
