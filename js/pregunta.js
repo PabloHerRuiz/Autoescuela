@@ -176,19 +176,9 @@ window.addEventListener("load", function () {
     imgBorrar.addEventListener("click", function () {
         var borrar = document.querySelector(".id").value;
 
-        var idBorrar = {
-            "id": borrar
-        };
-
-        var idJSON = JSON.stringify(idBorrar);
         // Realiza la solicitud DELETE
-        fetch("http://virtual.localpablo.com/API/apiPregunta.php", {
-            method: "DELETE",
-            body: idJSON,
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
+        fetch("http://virtual.localpablo.com/API/apiPregunta.php?id=" + borrar, {
+            method: "DELETE"
         })
             .then(x => x.text())
             .then(y => {

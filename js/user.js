@@ -6,6 +6,8 @@ window.addEventListener("load", function () {
     var btnAlu = document.getElementById("rolAlu");
     var btnProf = document.getElementById("rolProf");
     var btnAdmin = document.getElementById("rolAdmin");
+    var btnEliminar = document.querySelector(".btnEliminar");
+    var btnEditar = document.querySelector(".btnEditar");
 
     //funcionalidad
     idAlu.classList.add("id");
@@ -92,9 +94,9 @@ window.addEventListener("load", function () {
     btnProf.addEventListener("click", function () {
         idR = nombrePerfil.value;
         fetch("http://virtual.localpablo.com/API/apiUser.php?rol=profesor&id=" + idR,
-        {
-            method: "PUT"
-        })
+            {
+                method: "PUT"
+            })
             .then(x => x.text())
             .then(y => {
                 console.log("rol de profesor");
@@ -106,15 +108,18 @@ window.addEventListener("load", function () {
     btnAdmin.addEventListener("click", function () {
         idR = nombrePerfil.value;
         fetch("http://virtual.localpablo.com/API/apiUser.php?rol=admin&id=" + idR,
-        {
-            method: "PUT"
-        })
+            {
+                method: "PUT"
+            })
             .then(x => x.text())
             .then(y => {
                 console.log("rol de admin");
             })
         ActualizaListado();
     })
+
+    //eliminar
+
 
 
 });
