@@ -46,7 +46,7 @@ class UserRepository
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
@@ -56,7 +56,7 @@ class UserRepository
         $query = "SELECT * FROM USER";
         $stmt = $this->conexion->prepare($query);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 

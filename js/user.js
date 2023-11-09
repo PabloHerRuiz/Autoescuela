@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
     //contenido
-    var nombrePerfil = document.getElementById("nombreperfil");
+    var nombrePerfil = document.querySelector(".nombreperfil");
     var idAlu = document.createElement("span");
 
     //funcionalidad
@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
     function ActualizaListado() {
 
         // Borra los elementos existentes dentro de contenedorAlu
-        var contenedorAlu = document.getElementById("preguntas-container");
+        var contenedorAlu = document.getElementById("alumnos-container");
 
         // Obtén el elemento h2 dentro de contenedorAlu
         var h2 = contenedorAlu.querySelector("h2");
@@ -30,7 +30,7 @@ window.addEventListener("load", function () {
                 contenedor.innerHTML = y;
                 var alumno = contenedor.querySelector('.alumno');
                 fetch("http://virtual.localpablo.com/API/apiUser.php")
-                    .then(x => x.text())
+                    .then(x => x.json())
                     .then(y => {
                         console.log(y);
                         for (let i = 0; i < y.length; i++) {
@@ -44,7 +44,7 @@ window.addEventListener("load", function () {
                                     fetch("http://virtual.localpablo.com/API/apiUser.php?id=" + id)
                                         .then(x => x.json())
                                         .then(y => {
-                                            nombrePerfil.value = y[0].nombre;
+                                            nombrePerfil.textContent = y[0].nombre;
                                         })
                                 });
                             })(aluAux);

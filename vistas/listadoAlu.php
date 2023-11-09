@@ -4,7 +4,7 @@
 <head>
     <title>Listado Alumnos</title>
 
-    <link rel="stylesheet" href="/css/estilosListadoAlu.css">
+    <link rel="stylesheet" href="/css/estilosCreaPreg.css">
     <script src="/js/nav.js"></script>
     <script src="/js/user.js"></script>
 </head>
@@ -21,7 +21,7 @@
     </div>
 
     <div id="contenedor">
-        <div id="preguntas-container">
+        <div id="alumnos-container">
             <h2>ALUMNOS</h2>
 
         </div>
