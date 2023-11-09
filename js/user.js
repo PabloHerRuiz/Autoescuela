@@ -6,8 +6,8 @@ window.addEventListener("load", function () {
     var btnAlu = document.getElementById("rolAlu");
     var btnProf = document.getElementById("rolProf");
     var btnAdmin = document.getElementById("rolAdmin");
-    var btnEliminar = document.querySelector(".btnEliminar");
-    var btnEditar = document.querySelector(".btnEditar");
+    var btnEliminar = document.getElementById("btnEliminar");
+    var btnEditar = document.getElementById("btnEditar");
 
     //funcionalidad
     idAlu.classList.add("id");
@@ -119,7 +119,18 @@ window.addEventListener("load", function () {
     })
 
     //eliminar
+    // btnEliminar.addEventListener("click", function () {
+    //     idR = nombrePerfil.value;
+    //     fetch("http://virtual.localpablo.com/API/apiUser.php?id=" + idR,
+    //         {
+    //             method: "DELETE"
+    //         })
+    //         .then(x => x.text())
+    //         .then(y => {
+    //             console.log("usuario eliminado");
+    //         })
+    //     ActualizaListado();
 
-
+    // })
 
 });
