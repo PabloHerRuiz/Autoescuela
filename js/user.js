@@ -6,8 +6,7 @@ window.addEventListener("load", function () {
     var btnAlu = document.getElementById("rolAlu");
     var btnProf = document.getElementById("rolProf");
     var btnAdmin = document.getElementById("rolAdmin");
-    var btnEliminar = document.getElementById("btnEliminar");
-    var btnEditar = document.getElementById("btnEditar");
+
 
     //funcionalidad
     idAlu.classList.add("id");
@@ -45,12 +44,12 @@ window.addEventListener("load", function () {
                 fetch("http://virtual.localpablo.com/API/apiUser.php?menu=" + menu)
                     .then(x => x.json())
                     .then(y => {
-                        console.log(y);
                         for (let i = 0; i < y.length; i++) {
                             var aluAux = alumno.cloneNode(true);
                             aluAux.getElementsByClassName("nombrelista")[0].innerHTML = y[i].nombre;
                             aluAux.setAttribute("data-id", y[i].id);
 
+                            // Click
                             (function (elemento) {
                                 elemento.addEventListener("click", function () {
                                     var id = elemento.dataset.id;
@@ -60,77 +59,131 @@ window.addEventListener("load", function () {
                                             info.style.display = "";
                                             nombrePerfil.textContent = y[0].nombre;
                                             nombrePerfil.value = id;
-                                        })
+                                        });
                                 });
                             })(aluAux);
 
-
                             contenedorAlu.appendChild(idAlu);
                             contenedorAlu.appendChild(aluAux);
+
+
+                            // Eliminar
+                            (function (elemento) {
+                                var btnEliminar = elemento.querySelector(".btnEliminar");
+                                btnEliminar.setAttribute("data-id", y[i].id);
+
+                                btnEliminar.addEventListener("click", function () {
+                                    var idR = this.dataset.id;
+
+                                    // Oculta la fila antes de enviar la solicitud
+                                    var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
+                                    if (ficha) {
+                                        ficha.style.display = "none";
+                                    }
+
+                                    fetch("http://virtual.localpablo.com/API/apiUser.php?id=" + idR, {
+                                        method: "DELETE"
+                                    })
+                                        .then(x => x.text())
+                                        .then(y => {
+                                            console.log("usuario eliminado");
+                                        })
+                                        .catch(error => {
+                                            console.error("Error al eliminar usuario:", error);
+                                        })
+                                        .finally(() => {
+                                            // Actualiza la lista después de enviar la solicitud
+                                            info.style.display = "none";
+                                        });
+                                });
+
+                            })(aluAux);
+
                         }
                     })
+
+
+
             })
     }
     ActualizaListado();
-
 
     //botones roles
 
     //boton de alumno
     btnAlu.addEventListener("click", function () {
         idR = nombrePerfil.value;
-        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=alumno&id=" + idR,
-            {
-                method: "PUT"
-            })
+
+        // Oculta la fila antes de enviar la solicitud y actualizar la lista
+        var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
+        if (ficha) {
+            ficha.style.display = "none";
+        }
+
+        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=alumno&id=" + idR, {
+            method: "PUT"
+        })
             .then(x => x.text())
             .then(y => {
                 console.log("rol de alumno");
             })
-        ActualizaListado();
-    })
+            .catch(error => {
+                console.error("Error al actualizar la lista:", error);
+            });
+
+        // Oculta la información después de enviar la solicitud
+        info.style.display = "none";
+    });
+
 
     //boton de profesor
     btnProf.addEventListener("click", function () {
         idR = nombrePerfil.value;
-        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=profesor&id=" + idR,
-            {
-                method: "PUT"
-            })
+
+        // Oculta la fila antes de enviar la solicitud y actualizar la lista
+        var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
+        if (ficha) {
+            ficha.style.display = "none";
+        }
+
+        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=profesor&id=" + idR, {
+            method: "PUT"
+        })
             .then(x => x.text())
             .then(y => {
                 console.log("rol de profesor");
             })
-        ActualizaListado();
-    })
+            .catch(error => {
+                console.error("Error al actualizar la lista:", error);
+            });
+
+        // Oculta la información después de enviar la solicitud
+        info.style.display = "none";
+    });
 
     //boton de admin
     btnAdmin.addEventListener("click", function () {
         idR = nombrePerfil.value;
-        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=admin&id=" + idR,
-            {
-                method: "PUT"
-            })
+
+        // Oculta la fila antes de enviar la solicitud y actualizar la lista
+        var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
+        if (ficha) {
+            ficha.style.display = "none";
+        }
+
+        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=admin&id=" + idR, {
+            method: "PUT"
+        })
             .then(x => x.text())
             .then(y => {
                 console.log("rol de admin");
             })
-        ActualizaListado();
-    })
+            .catch(error => {
+                console.error("Error al actualizar la lista:", error);
+            });
 
-    //eliminar
-    // btnEliminar.addEventListener("click", function () {
-    //     idR = nombrePerfil.value;
-    //     fetch("http://virtual.localpablo.com/API/apiUser.php?id=" + idR,
-    //         {
-    //             method: "DELETE"
-    //         })
-    //         .then(x => x.text())
-    //         .then(y => {
-    //             console.log("usuario eliminado");
-    //         })
-    //     ActualizaListado();
-
-    // })
+        // Oculta la información después de enviar la solicitud
+        info.style.display = "none";
+    });
 
 });

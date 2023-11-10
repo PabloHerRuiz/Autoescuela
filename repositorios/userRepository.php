@@ -64,12 +64,13 @@ class UserRepository
     //Obtener todos los usuarios
     public function getAllUser()
     {
-        $query = "SELECT * FROM USER";
+        $query = "SELECT * FROM USER WHERE ROL='alumno'";
         $stmt = $this->conexion->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    
 
     public function getAllUserNoRol()
     {
