@@ -74,27 +74,28 @@ window.addEventListener("load", function () {
 
                                 btnEliminar.addEventListener("click", function () {
                                     var idR = this.dataset.id;
-
+                                    var confirmacion = window.confirm("¿Estás seguro de que quieres eliminar este elemento?");
                                     // Oculta la fila antes de enviar la solicitud
                                     var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
-                                    if (ficha) {
-                                        ficha.style.display = "none";
-                                    }
+                                    if (confirmacion) {
+                                        if (ficha) {
+                                            ficha.style.display = "none";
+                                        }
 
-                                    fetch("http://virtual.localpablo.com/API/apiUser.php?id=" + idR, {
-                                        method: "DELETE"
-                                    })
-                                        .then(x => x.text())
-                                        .then(y => {
-                                            console.log("usuario eliminado");
+                                        fetch("http://virtual.localpablo.com/API/apiUser.php?id=" + idR, {
+                                            method: "DELETE"
                                         })
-                                        .catch(error => {
-                                            console.error("Error al eliminar usuario:", error);
-                                        })
-                                        .finally(() => {
-                                            // Actualiza la lista después de enviar la solicitud
-                                            info.style.display = "none";
-                                        });
+                                            .then(x => x.text())
+                                            .then(y => {
+                                                console.log("usuario eliminado");
+                                            })
+                                            .catch(error => {
+                                                console.error("Error al eliminar usuario:", error);
+                                            })
+                                            .finally(() => {
+                                                info.style.display = "none";
+                                            });
+                                    }
                                 });
 
                             })(aluAux);
