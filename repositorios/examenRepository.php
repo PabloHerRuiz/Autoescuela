@@ -38,12 +38,22 @@ class ExamenRepository
         $stmt->execute();
     }
 
+    public function getAllExam()
+    {
+        $query = "SELECT DISTINCT Examen_idExamen FROM EXAMEN_HAS_PREGUNTA";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 
     //obtener todas los examenes
-    public function getAllTest()
+    public function getAllTest($idExamen)
     {
-        $query = "SELECT * FROM EXAMEN_HAS_PREGUNTA";
+        $query = "SELECT * FROM PREGUNTA WHERE IDPREGUNTA IN (SELECT Pregunta_idPregunta FROM examen_has_pregunta WHERE Examen_idExamen=:idExamen);";
         $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;

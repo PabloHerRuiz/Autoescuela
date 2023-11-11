@@ -325,13 +325,14 @@ select {
 .radio-buttons {
     grid-column: 2; /* Coloca los botones en la primera columna */
     grid-row: 2; /* Están en la segunda fila */
-    display: flex;
+    display: block;
+    margin-top: 50px;
     flex-direction: column;
-    margin-left: 20px;
+    background-color: darkorchid;
 }
 
 .radio-button {
-    margin-bottom: 10px;
+    margin-bottom: 100px;
 }
 
 .caja-alargada {
@@ -340,6 +341,12 @@ select {
     margin-top: 50px;
     height: 200px;
     background-color: lightgreen;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .timer{

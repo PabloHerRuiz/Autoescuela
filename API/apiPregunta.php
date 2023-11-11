@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 "op3" => $pregunta['rep3'],
                 "idCategoria" => $pregunta['Categorias_idCategoria'],
                 "idDificultad" => $pregunta['Dificultad_idDificultad'],
-                "correcta" => $pregunta['correcta'],
+                "correcta" => $pregunta['correcta']
             ];
             $pregs[] = $preg;
         }

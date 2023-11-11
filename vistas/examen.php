@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="/css/estilosCreaPreg.css">
     <script src="/js/nav.js"></script>
+    <script src="/js/test.js"></script>
 </head>
 
 <body>
@@ -23,9 +24,9 @@
         <div class="caja-grande"></div>
         <div class="caja-larga"></div>
         <div class="radio-buttons">
-            <input type="radio" name="opcion" class="radio-button"> Opción 1<br>
-            <input type="radio" name="opcion" class="radio-button"> Opción 2<br>
-            <input type="radio" name="opcion" class="radio-button"> Opción 3<br>
+            <input type="radio" value="1" class="radio-button"><span class="resp"></span><br>
+            <input type="radio" value="2" class="radio-button"><span class="resp"></span><br>
+            <input type="radio" value="3" class="radio-button"><span class="resp"></span><br>
         </div>
         <div class="caja-alargada"></div>
         <div class="timer"></div>
