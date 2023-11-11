@@ -1,21 +1,28 @@
 <?php
-class ExamenRepository{
+class ExamenRepository
+{
 
-    private $conexion = db::abreConexion;
+    private $conexion;
+    function __construct($conexion)
+    {
+        $this->conexion = $conexion;
+    }
 
     //CREAR
-    public function createExamen($idExamen,$fechaHora,$idUser){
-        $query="INSERT INTO EXAMEN (idExamen,fechaHora,idUser) VALUES (:idExamen,:fechaHora,:idUser)";
-        $stmt= $this->conexion->prepare($query);
+    public function createExamen($idExamen, $fechaHora, $idUser)
+    {
+        $query = "INSERT INTO EXAMEN (idExamen,fechaHora,idUser) VALUES (:idExamen,:fechaHora,:idUser)";
+        $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
         $stmt->bindParam(":fechaHora", $fechaHora, PDO::PARAM_STR);
         $stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
         $stmt->execute();
     }
     //BORRAR
-    public function deleteExamen($idExamen){
-        $query= "DELETE FROM EXAMEN WHERE IDEXAMEN=:idExamen";
-        $stmt= $this->conexion->prepare($query);
+    public function deleteExamen($idExamen)
+    {
+        $query = "DELETE FROM EXAMEN WHERE IDEXAMEN=:idExamen";
+        $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
         $stmt->execute();
     }
@@ -23,13 +30,24 @@ class ExamenRepository{
     // public function updateExamen($idExamen){}
 
     //LEER
-    public function readExamen($idExamen){
-        $query= "SELECT * FROM EXAMEN WHERE IDEXAMEN=:idExamen";
-        $stmt= $this->conexion->prepare($query);
+    public function readExamen($idExamen)
+    {
+        $query = "SELECT * FROM EXAMEN WHERE IDEXAMEN=:idExamen";
+        $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
         $stmt->execute();
     }
-    
+
+
+    //obtener todas los examenes
+    public function getAllTest()
+    {
+        $query = "SELECT * FROM EXAMEN_HAS_PREGUNTA";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
 }
 

@@ -1,7 +1,11 @@
 <?php
 class IntentoRepository
 {
-    private $conexion = db::abreConexion;
+    private $conexion;
+    function __construct($conexion)
+    {
+        $this->conexion = $conexion;
+    }
 
     //CREAR
     public function createIntento($idIntento, $json, $idUser, $idExamen)
@@ -31,7 +35,8 @@ class IntentoRepository
     // }
 
     //LEER
-    public function readIntento($idIntento){
+    public function readIntento($idIntento)
+    {
         $query = "SELECT * FROM INTENTO WHERE IDINTENTO=:idIntento";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idIntento", $idIntento, PDO::PARAM_INT);

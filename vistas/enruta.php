@@ -39,5 +39,9 @@ if (isset($_GET['menu'])) {
         require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/darAlta.php';
 
     }
+    if ($_GET['menu'] == "test") {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/listadoTest.php';
+
+    }
 }
 ?>
