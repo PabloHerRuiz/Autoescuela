@@ -30,7 +30,7 @@
         </div>
         <div class="caja-alargada"></div>
         <div class="timer"></div>
-        <div class="terminar"><input type="submit" value="Finalizar"></div>
+        <div class="terminar"><button id="fin">Finalizar</button></div>
     </div>
 
 </body>
