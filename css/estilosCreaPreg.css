@@ -298,3 +298,58 @@ select {
     flex-wrap: wrap;
     overflow-y: auto;
 }
+
+/* examen */
+#exam-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas, la primera más grande */
+    grid-template-rows: auto auto auto; /* Tres filas automáticas */
+    gap: 20px; /* Espacio entre las cajas */
+    padding: 20px;
+}
+
+.caja-grande {
+    grid-column: 2; /* Coloca la caja grande en la segunda columna */
+    grid-row: 1 / span 2; /* Ocupa dos filas desde la primera */
+    height: 200px;
+    background-color: lightblue;
+}
+
+.caja-larga {
+    grid-row: 1 / span 2; /* Ocupa dos filas desde la primera */
+    height: 400px;
+    background-color: lightcoral;
+}
+
+.radio-buttons {
+    grid-column: 2; /* Coloca los botones en la primera columna */
+    grid-row: 2; /* Están en la segunda fila */
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.radio-button {
+    margin-bottom: 10px;
+}
+
+.caja-alargada {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    margin-top: 50px;
+    height: 200px;
+    background-color: lightgreen;
+}
+
+.timer{
+    grid-column: 1 / 2;
+    grid-row: 4/5;
+    background-color: rgb(255, 0, 234);
+    height: 30px;
+}
+.terminar{
+    grid-column: 2;
+    grid-row: 4/5;
+    background-color: rgb(166, 255, 0);
+    height: 30px;
+}

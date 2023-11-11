@@ -20,11 +20,9 @@
         </div>
     </div>
 
-    <div id="test-container">
+    <div id="test-container"></div>
 
-    </div>
 
-    </div>
 </body>
 
 </html>

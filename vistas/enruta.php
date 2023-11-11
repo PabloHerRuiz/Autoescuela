@@ -27,10 +27,6 @@ if (isset($_GET['menu'])) {
         require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/creaPreguntas.php';
 
     }
-    if ($_GET['menu'] == "modifica") {
-        require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/modificarPreg.php';
-
-    }
     if ($_GET['menu'] == "listalu") {
         require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/listadoAlu.php';
 
@@ -41,6 +37,10 @@ if (isset($_GET['menu'])) {
     }
     if ($_GET['menu'] == "test") {
         require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/listadoTest.php';
+
+    }
+    if ($_GET['menu'] == "examen") {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/examen.php';
 
     }
 }
