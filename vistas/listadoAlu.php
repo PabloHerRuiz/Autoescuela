@@ -20,6 +20,10 @@
         </div>
     </div>
 
+    <div id="botonAlta-list">
+        <button id="irAlta">Dar de alta</button>
+    </div>
+
     <div id="contenedor">
         <div id="alumnos-container">
             <h2>ALUMNOS</h2>
@@ -39,9 +43,8 @@
                 <p>Promedio de errores:<span></span></p>
             </div>
         </div>
-
-
     </div>
+
 </body>
 
 </html>

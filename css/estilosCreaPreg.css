@@ -382,3 +382,9 @@ button {
     padding: 10px; 
     width: 200px; 
 }
+
+/* dar alta */
+#botonAlta-list{
+    display: flex;
+    float: right;
+}

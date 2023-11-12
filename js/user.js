@@ -187,6 +187,18 @@ window.addEventListener("load", function () {
             info.style.display = "none";
         });
 
+        var vLista=document.getElementById("irList");
+        vLista.addEventListener("click",function(){
+            document.location="?menu=listalu&rol=admin";
+        })
+
+
+    }
+    if(menu=="listalu"){
+        var vAlta=document.getElementById("irAlta");
+        vAlta.addEventListener("click",function(){
+            document.location="?menu=alta&rol=admin";
+        })
     }
 
 });

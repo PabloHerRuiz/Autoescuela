@@ -20,6 +20,10 @@
         </div>
     </div>
 
+    <div id="botonAlta-list">
+        <button id="irList">Listado Alumnos</button>
+    </div>
+
     <div id="contenedor">
         <div id="alumnos-container">
             <h2>ALUMNOS</h2>
