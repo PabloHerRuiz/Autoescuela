@@ -106,10 +106,15 @@ window.addEventListener("load", function () {
                             testAux.getElementsByClassName("idtest")[0].innerHTML = i;
                             testAux.setAttribute("data-id", y[i].id);
 
+                            radioBtn = document.querySelector(".radio-buttons");
+                            radioBtn.style.display="none";
+
                             (function (elemento, indice) {
                                 elemento.addEventListener("click", function () {
                                     caja = document.querySelector(".caja-grande");
                                     caja.innerHTML = y[indice].enunciado;
+
+                                    radioBtn.style.display="";
 
                                     opciones = document.querySelectorAll(".resp");
                                     opciones[0].textContent = y[indice].op1;
@@ -198,11 +203,15 @@ window.addEventListener("load", function () {
                     console.log(y);
                     console.log("intento creado");
                 })
+
+            // Borra el elemento con la clave "respuestas" del localStorage
+            // localStorage.removeItem("respuestas");
+
         })
 
         //timer
         // Establece el tiempo inicial a 30 minutos (en segundos)
-        var tiempoRestante = 30*60;
+        var tiempoRestante = 30 * 60;
 
         // Obtén la referencia al elemento con la clase "timer"
         var timerElement = document.querySelector('.timer');
@@ -237,7 +246,7 @@ window.addEventListener("load", function () {
 
         // Función para ejecutar cuando el temporizador llega a cero
         function ejecutarAlTerminar() {
-            alert('¡El tiempo se ha acabado!'); 
+            alert('¡El tiempo se ha acabado!');
         }
 
 
