@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/estilosCreaPreg.css">
     <script src="/js/nav.js"></script>
     <script src="/js/test.js"></script>
-    <script src="/js/timer.js"></script>
 </head>
 
 <body>

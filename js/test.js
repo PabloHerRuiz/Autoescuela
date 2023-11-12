@@ -169,9 +169,9 @@ window.addEventListener("load", function () {
             // Llamamos a la función getCor
             getCor().then(correctas => {
                 var aciertos = compararRespuestas(comprobacion, correctas);
-                var confirmacion = window.confirm("Has tenido "+aciertos+" aciertos");
-                if(confirmacion){
-                    document.location="?menu=test";
+                var confirmacion = window.confirm("Has tenido " + aciertos + " aciertos");
+                if (confirmacion) {
+                    document.location = "?menu=test";
                 }
                 // console.log("estos son los aciertos " + aciertos);
             })
@@ -198,13 +198,47 @@ window.addEventListener("load", function () {
                     console.log(y);
                     console.log("intento creado");
                 })
-
-
-                
-                
         })
 
+        //timer
+        // Establece el tiempo inicial a 30 minutos (en segundos)
+        var tiempoRestante = 30*60;
 
+        // Obtén la referencia al elemento con la clase "timer"
+        var timerElement = document.querySelector('.timer');
+
+        // Función que actualiza el temporizador
+        function actualizarTemporizador() {
+            // Calcula minutos y segundos restantes
+            var minutos = Math.floor(tiempoRestante / 60);
+            var segundos = tiempoRestante % 60;
+
+            // Formatea el tiempo en formato MM:SS
+            var tiempoFormateado = minutos.toString().padStart(2, '0') + ':' + segundos.toString().padStart(2, '0');
+
+            // Actualiza el contenido del elemento con la clase "timer"
+            timerElement.textContent = tiempoFormateado;
+
+            // Reduce el tiempo restante en 1 segundo
+            tiempoRestante--;
+
+            // Verifica si el tiempo ha llegado a cero
+            if (tiempoRestante < 0) {
+                clearInterval(intervalId); // Detén el temporizador cuando llega a cero
+                timerElement.textContent = 'FIN';
+
+                ejecutarAlTerminar();
+                btnFinalizar.click();
+            }
+        }
+
+        // Llama a la función actualizarTemporizador cada segundo (1000 milisegundos)
+        var intervalId = setInterval(actualizarTemporizador, 1000);
+
+        // Función para ejecutar cuando el temporizador llega a cero
+        function ejecutarAlTerminar() {
+            alert('¡El tiempo se ha acabado!'); 
+        }
 
 
     }
