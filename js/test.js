@@ -137,18 +137,49 @@ window.addEventListener("load", function () {
                     })
             })
 
+        //conseguimos las respuestas correctas en formato json
+        function getCor() {
+            return fetch("http://virtual.localpablo.com/API/apiPregunta.php?cor=1&id=" + id)
+                .then(x => x.json())
+                .then(y => {
+                    return y; // Devolvemos el valor para que esté disponible en la cadena then siguiente
+                });
+        }
+
+        //comprobar preguntas
+        function compararRespuestas(respuestasEstudiante, respuestasCorrectas) {
+            var aciertos = 0;
+
+            for (var pregunta in respuestasEstudiante) {
+                // Compara la respuesta del estudiante con la respuesta correcta
+                if (respuestasEstudiante[pregunta] === respuestasCorrectas[pregunta]) {
+                    aciertos++;
+                }
+            }
+
+            return aciertos;
+        }
+
+        //finalizar examen
         var btnFinalizar = document.querySelector("#fin");
 
         btnFinalizar.addEventListener("click", function () {
             var comprobacion = getResp();
-            var comprobacionDone=JSON.stringify(comprobacion);
+
+            // Llamamos a la función getCor
+            getCor().then(correctas => {
+                var aciertos = compararRespuestas(comprobacion, correctas);
+                console.log("estos son los aciertos " + aciertos);
+            })
+
+            var comprobacionDone = JSON.stringify(comprobacion);
             //hay que cambiar esto con el id del usuario del sesion start pero ahora mismo me da pereza
             var jsonRaw = {
                 "idUser": 1,
                 "json": comprobacionDone
             };
 
-            var jsonDone=JSON.stringify(jsonRaw);
+            var jsonDone = JSON.stringify(jsonRaw);
 
             fetch("http://virtual.localpablo.com/API/apiIntento.php?id=" + id, {
                 method: "POST",
@@ -158,8 +189,8 @@ window.addEventListener("load", function () {
                     'Content-Type': 'application/json'
                 }
             })
-                .then(x=>x.text())
-                .then(y=>{
+                .then(x => x.text())
+                .then(y => {
                     console.log(y);
                     console.log("intento creado");
                 })

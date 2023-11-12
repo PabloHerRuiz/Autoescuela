@@ -42,6 +42,15 @@ class IntentoRepository
         $stmt->execute();
     }
 
+    //obtener el json de un intento concreto pero eso ya lo hare en otro momento
+    public function getJSON($idExamen){
+        $query = "select json from intentos where Examen_idExamen=:idExamen";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
+        $stmt->execute();
+        $json = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $json;
+    }
 
 }
 ?>

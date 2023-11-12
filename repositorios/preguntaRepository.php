@@ -48,7 +48,7 @@ class preguntaRepository
         $stmt->bindParam(":idCategoria", $idCategoria, PDO::PARAM_INT);
         $stmt->bindParam(":idPregunta", $idPregunta, PDO::PARAM_INT);
         $stmt->execute();
-        
+
     }
 
 
@@ -73,6 +73,18 @@ class preguntaRepository
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    //obtener las respusetas de un examen
+    public function getAllCor($idExamen)
+    {
+        $query = "select correcta from pregunta where idPregunta in (SELECT pregunta_idpregunta from examen_has_pregunta where examen_idExamen=:idexamen)";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":idexamen", $idExamen, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 
 }
 ?>
