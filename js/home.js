@@ -8,10 +8,12 @@ window.addEventListener("load", function () {
     var url = new URL(window.location.href);
 
     var menu = url.searchParams.get("menu");
+    var rol = url.searchParams.get("rol");
+
 
     if (menu == "home") {
         test.addEventListener("click", function () {
-            document.location = "?menu=test";
+            document.location = "?menu=test&rol="+rol;
         })
     } else {
         test1.addEventListener("click", function () {

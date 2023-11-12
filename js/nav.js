@@ -25,7 +25,7 @@ window.addEventListener("load", function () {
         });
     } else {
         logo.addEventListener("click", function () {
-            document.location = "?menu=home";
+            document.location = "?menu=home&rol="+rol;
         });
     }
 

@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <?php
+    sesion::iniciar_sesion();
+    ?>
     <div class="navbar">
         <img id="logo" src="/css/imagenes/logo.png" alt="Logo">
         <h1>Listado Tests</h1>

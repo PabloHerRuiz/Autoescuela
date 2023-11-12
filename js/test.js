@@ -3,6 +3,7 @@ window.addEventListener("load", function () {
     var url = new URL(window.location.href);
 
     var menu = url.searchParams.get("menu");
+    var rol=url.searchParams.get("rol");
 
     if (menu == "test") {
         var contenedorTest = document.getElementById("test-container");
@@ -25,7 +26,7 @@ window.addEventListener("load", function () {
 
                             (function (elemento) {
                                 elemento.addEventListener("click", function () {
-                                    document.location = "?menu=examen&id=" + y[i].idExamen;
+                                    document.location = "?menu=examen&id=" + y[i].idExamen+"&rol="+rol;
                                 });
                             })(testAux);
 

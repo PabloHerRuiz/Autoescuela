@@ -11,10 +11,10 @@
 <body>
     <?php
     //creamos validator
-    $valida = new Validator() ;
+    $valida = new Validator();
     //comprobamos que se ha hecho el post de formulario
     if (isset($_POST['login'])) {
-        
+
         //creamos conexion y login
         $conn = db::abreConexion();
         $login = new login($conn);
@@ -26,9 +26,13 @@
         if ($valida->ValidacionPasada()) {
             if (!empty($_POST['nombre']) && !empty($_POST['pass'])) {
                 $userRepository = new UserRepository($conn);
-                $user=$userRepository->encuentra($_POST['nombre'],md5($_POST['pass']));
+                $user = $userRepository->encuentra($_POST['nombre'], md5($_POST['pass']));
                 if ($login->user_login($user)) {
-                    header("location:?menu=home");
+                    if ($user["rol"] == "admin") {
+                        header("location:?menu=homeadmin&rol=" . $user["rol"]);
+                    } else {
+                        header("location:?menu=home&rol=" . $user["rol"]);
+                    }
                 }
             }
         }
