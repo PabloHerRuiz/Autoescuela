@@ -47,6 +47,7 @@ window.addEventListener("load", function () {
                         for (let i = 0; i < y.length; i++) {
                             var aluAux = alumno.cloneNode(true);
                             aluAux.getElementsByClassName("nombrelista")[0].innerHTML = y[i].nombre;
+                            aluAux.getElementsByClassName("nombrelista")[0].setAttribute("data-id", y[i].id);
                             aluAux.setAttribute("data-id", y[i].id);
 
                             // Click
@@ -146,12 +147,15 @@ window.addEventListener("load", function () {
                                         .then(x => x.text())
                                         .then(y => {
                                             console.log("alumno actualizado");
+                                            var cambio = document.querySelector('.nombrelista[data-id="' + id + '"]');
+                                            cambio.innerHTML = nombre.value;
                                         })
-                                    
+
+
                                     // Finalmente, cierra la modal
                                     modal.style.display = 'none';
                                 });
-                                
+
                             })(aluAux);
 
 

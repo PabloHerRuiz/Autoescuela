@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if ($datos) {
             $conn = db::abreConexion();
             $userRepository = new UserRepository($conn);
-            $userRepository->updateUser($id, $datos["nombre"], $datos["pass"]);
+            $userRepository->updateUser($id, $datos["nombre"], md5($datos["pass"]));
             // Devuelve una respuesta
             echo '{"respuesta":"OK"}';
         }
