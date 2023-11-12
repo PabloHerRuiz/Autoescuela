@@ -11,7 +11,7 @@
 
 <body>
     <div class="navbar">
-        <img src="/css/imagenes/logo.png" alt="Logo">
+        <img id="logo" src="/css/imagenes/logo.png" alt="Logo">
         <h1>Listado Alumnos</h1>
         <div class="icons">
             <img id="perfil" src="/css/imagenes/usuario.png" alt="Perfil">

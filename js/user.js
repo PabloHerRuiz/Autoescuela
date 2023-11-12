@@ -110,81 +110,83 @@ window.addEventListener("load", function () {
     ActualizaListado();
 
     //botones roles
+    if (menu == "alta") {
+        //boton de alumno
+        btnAlu.addEventListener("click", function () {
+            idR = nombrePerfil.value;
 
-    //boton de alumno
-    btnAlu.addEventListener("click", function () {
-        idR = nombrePerfil.value;
+            // Oculta la fila antes de enviar la solicitud y actualizar la lista
+            var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
+            if (ficha) {
+                ficha.style.display = "none";
+            }
 
-        // Oculta la fila antes de enviar la solicitud y actualizar la lista
-        var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
-        if (ficha) {
-            ficha.style.display = "none";
-        }
-
-        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=alumno&id=" + idR, {
-            method: "PUT"
-        })
-            .then(x => x.text())
-            .then(y => {
-                console.log("rol de alumno");
+            fetch("http://virtual.localpablo.com/API/apiUser.php?rol=alumno&id=" + idR, {
+                method: "PUT"
             })
-            .catch(error => {
-                console.error("Error al actualizar la lista:", error);
-            });
+                .then(x => x.text())
+                .then(y => {
+                    console.log("rol de alumno");
+                })
+                .catch(error => {
+                    console.error("Error al actualizar la lista:", error);
+                });
 
-        // Oculta la información después de enviar la solicitud
-        info.style.display = "none";
-    });
+            // Oculta la información después de enviar la solicitud
+            info.style.display = "none";
+        });
 
 
-    //boton de profesor
-    btnProf.addEventListener("click", function () {
-        idR = nombrePerfil.value;
+        //boton de profesor
+        btnProf.addEventListener("click", function () {
+            idR = nombrePerfil.value;
 
-        // Oculta la fila antes de enviar la solicitud y actualizar la lista
-        var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
-        if (ficha) {
-            ficha.style.display = "none";
-        }
+            // Oculta la fila antes de enviar la solicitud y actualizar la lista
+            var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
+            if (ficha) {
+                ficha.style.display = "none";
+            }
 
-        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=profesor&id=" + idR, {
-            method: "PUT"
-        })
-            .then(x => x.text())
-            .then(y => {
-                console.log("rol de profesor");
+            fetch("http://virtual.localpablo.com/API/apiUser.php?rol=profesor&id=" + idR, {
+                method: "PUT"
             })
-            .catch(error => {
-                console.error("Error al actualizar la lista:", error);
-            });
+                .then(x => x.text())
+                .then(y => {
+                    console.log("rol de profesor");
+                })
+                .catch(error => {
+                    console.error("Error al actualizar la lista:", error);
+                });
 
-        // Oculta la información después de enviar la solicitud
-        info.style.display = "none";
-    });
+            // Oculta la información después de enviar la solicitud
+            info.style.display = "none";
+        });
 
-    //boton de admin
-    btnAdmin.addEventListener("click", function () {
-        idR = nombrePerfil.value;
+        //boton de admin
+        btnAdmin.addEventListener("click", function () {
+            idR = nombrePerfil.value;
 
-        // Oculta la fila antes de enviar la solicitud y actualizar la lista
-        var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
-        if (ficha) {
-            ficha.style.display = "none";
-        }
+            // Oculta la fila antes de enviar la solicitud y actualizar la lista
+            var ficha = document.querySelector('.alumno[data-id="' + idR + '"]');
+            if (ficha) {
+                ficha.style.display = "none";
+            }
 
-        fetch("http://virtual.localpablo.com/API/apiUser.php?rol=admin&id=" + idR, {
-            method: "PUT"
-        })
-            .then(x => x.text())
-            .then(y => {
-                console.log("rol de admin");
+            fetch("http://virtual.localpablo.com/API/apiUser.php?rol=admin&id=" + idR, {
+                method: "PUT"
             })
-            .catch(error => {
-                console.error("Error al actualizar la lista:", error);
-            });
+                .then(x => x.text())
+                .then(y => {
+                    console.log("rol de admin");
+                })
+                .catch(error => {
+                    console.error("Error al actualizar la lista:", error);
+                });
 
-        // Oculta la información después de enviar la solicitud
-        info.style.display = "none";
-    });
+            // Oculta la información después de enviar la solicitud
+            info.style.display = "none";
+        });
+
+    }
 
 });

@@ -3,13 +3,14 @@
 
 <head>
     <title>HOME</title>
-    <link rel="stylesheet" href="/css/estilosHomeAdmin.css">
+    <link rel="stylesheet" href="/css/estilosCreaPreg.css">
     <script src="/js/nav.js"></script>
+    <script src="/js/home.js"></script>
 </head>
 
 <body>
     <div class="navbar">
-        <img src="/css/imagenes/logo.png" alt="Logo">
+        <img id="logo" src="/css/imagenes/logo.png" alt="Logo">
         <h1>HOME</h1>
         <div class="icons">
             <img id="perfil" src="/css/imagenes/usuario.png" alt="Perfil">
@@ -19,10 +20,9 @@
     </div>
     <div class="content">
         <div class="button-container">
-            <button>Crear Test</button>
-            <button>Listado Test</button>
-            <button>Modificar Test</button>
-            <button>Listado Alumnos</button>
+            <button id="irCTest">Crear Test</button>
+            <button id="irLTest">Listado Test</button>
+            <button id="irLAlu">Listado Alumnos</button>
         </div>
     </div>
 </body>

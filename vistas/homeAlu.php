@@ -3,8 +3,9 @@
 
 <head>
     <title>HOME</title>
-    <link rel="stylesheet" href="/css/estilosHomeAlu.css">
+    <link rel="stylesheet" href="/css/estilosCreaPreg.css">
     <script src="/js/nav.js"></script>
+    <script src="/js/home.js"></script>
 </head>
 
 <body>
@@ -12,7 +13,7 @@
     Sesion::iniciar_sesion();
     ?>
     <div class="navbar">
-        <img src="/css/imagenes/logo.png" alt="Logo">
+        <img id="logo" src="/css/imagenes/logo.png" alt="Logo">
         <h1>HOME</h1>
         <div class="icons">
             <img id="perfil" src="/css/imagenes/usuario.png" alt="Perfil">
@@ -22,9 +23,9 @@
     </div>
     <div class="content">
         <div class="button-container">
-            <button>Test</button>
-            <button>Test de Errores</button>
-            <button>Generar Test</button>
+            <button id="irTest">Test</button>
+            <button id="irTestERR">Test de Errores</button>
+            <button id="irGenT">Generar Test</button>
         </div>
     </div>
     
