@@ -15,15 +15,15 @@ window.addEventListener("load", function () {
         })
     } else {
         test1.addEventListener("click", function () {
-            document.location = "?menu=crea";
+            document.location = "?menu=crea&rol=admin";
         })
 
         test2.addEventListener("click", function () {
-            document.location = "?menu=test";
+            document.location = "?menu=test&rol=admin";
         })
 
         test3.addEventListener("click", function () {
-            document.location = "?menu=listalu";
+            document.location = "?menu=listalu&rol=admin";
         })
     }
 
