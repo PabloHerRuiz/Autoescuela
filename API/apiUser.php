@@ -59,11 +59,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo json_encode($users);
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
-    $id = $_GET["id"];
-    $rol = $_GET["rol"];
-    $conn = db::abreconexion();
-    $userRepository = new UserRepository($conn);
-    $userRepository->updateUserRol($id, $rol);
+    if ($_GET["modo"] == "actualizar") {
+        $id = $_GET["id"];
+        // Obtén los datos enviados en la solicitud POST
+        $datos = json_decode(file_get_contents("php://input"), true);
+        if ($datos) {
+            $conn = db::abreConexion();
+            $userRepository = new UserRepository($conn);
+            $userRepository->updateUser($id, $datos["nombre"], $datos["pass"]);
+            // Devuelve una respuesta
+            echo '{"respuesta":"OK"}';
+        }
+
+    } else {
+        $id = $_GET["id"];
+        $rol = $_GET["rol"];
+        $conn = db::abreconexion();
+        $userRepository = new UserRepository($conn);
+        $userRepository->updateUserRol($id, $rol);
+    }
 
 } else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
     $id = $_GET["id"];

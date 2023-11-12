@@ -89,9 +89,6 @@ window.addEventListener("load", function () {
                                             .then(y => {
                                                 console.log("usuario eliminado");
                                             })
-                                            .catch(error => {
-                                                console.error("Error al eliminar usuario:", error);
-                                            })
                                             .finally(() => {
                                                 info.style.display = "none";
                                             });
@@ -99,6 +96,65 @@ window.addEventListener("load", function () {
                                 });
 
                             })(aluAux);
+
+                            //editar
+                            (function (elemento) {
+                                var btnEditar = elemento.querySelector(".btnEditar");
+                                btnEditar.setAttribute("data-id", y[i].id);
+
+                                const modal = document.getElementById('miModal');
+                                const btnCerrarModal = document.getElementById('cerrarModal');
+                                const btnGuardarCambios = document.getElementById('guardarCambios');
+
+                                btnEditar.addEventListener('click', function () {
+                                    var idR = this.dataset.id;
+                                    fetch("http://virtual.localpablo.com/API/apiUser.php?id=" + idR)
+                                        .then(x => x.json())
+                                        .then(y => {
+                                            info.style.display = "none";
+                                            var nombre = document.getElementById("nombre");
+                                            nombre.value = y[0].nombre;
+                                            nombre.setAttribute("data-id", y[0].id);
+                                            var pass = document.getElementById("contrasena");
+                                            pass.value = y[0].pass;
+                                        });
+                                    modal.style.display = 'block';
+                                });
+
+                                btnCerrarModal.addEventListener('click', function () {
+                                    modal.style.display = 'none';
+                                });
+
+                                btnGuardarCambios.addEventListener('click', function () {
+
+                                    var nombre = document.getElementById("nombre");
+                                    var pass = document.getElementById("contrasena");
+                                    var id = nombre.getAttribute("data-id");
+
+                                    var alumno = {
+                                        "nombre": nombre.value,
+                                        "pass": pass.value
+                                    };
+
+                                    var alumnoDone = JSON.stringify(alumno);
+
+
+                                    fetch("http://virtual.localpablo.com/API/apiUser.php?modo=actualizar&id=" + id, {
+                                        method: "PUT",
+                                        body: alumnoDone
+                                    })
+                                        .then(x => x.text())
+                                        .then(y => {
+                                            console.log("alumno actualizado");
+                                        })
+                                    
+                                    // Finalmente, cierra la modal
+                                    modal.style.display = 'none';
+                                });
+                                
+                            })(aluAux);
+
+
 
                         }
                     })
@@ -128,9 +184,6 @@ window.addEventListener("load", function () {
                 .then(y => {
                     console.log("rol de alumno");
                 })
-                .catch(error => {
-                    console.error("Error al actualizar la lista:", error);
-                });
 
             // Oculta la información después de enviar la solicitud
             info.style.display = "none";
@@ -154,9 +207,6 @@ window.addEventListener("load", function () {
                 .then(y => {
                     console.log("rol de profesor");
                 })
-                .catch(error => {
-                    console.error("Error al actualizar la lista:", error);
-                });
 
             // Oculta la información después de enviar la solicitud
             info.style.display = "none";
@@ -179,25 +229,21 @@ window.addEventListener("load", function () {
                 .then(y => {
                     console.log("rol de admin");
                 })
-                .catch(error => {
-                    console.error("Error al actualizar la lista:", error);
-                });
 
             // Oculta la información después de enviar la solicitud
             info.style.display = "none";
         });
 
-        var vLista=document.getElementById("irList");
-        vLista.addEventListener("click",function(){
-            document.location="?menu=listalu&rol=admin";
+        var vLista = document.getElementById("irList");
+        vLista.addEventListener("click", function () {
+            document.location = "?menu=listalu&rol=admin";
         })
 
 
-    }
-    if(menu=="listalu"){
-        var vAlta=document.getElementById("irAlta");
-        vAlta.addEventListener("click",function(){
-            document.location="?menu=alta&rol=admin";
+    } else if (menu == "listalu") {
+        var vAlta = document.getElementById("irAlta");
+        vAlta.addEventListener("click", function () {
+            document.location = "?menu=alta&rol=admin";
         })
     }
 

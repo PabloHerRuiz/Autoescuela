@@ -29,13 +29,13 @@ class UserRepository
         $stmt->execute();
     }
     //UPDATE
-    public function updateUser($id, $nombre, $password, $rol)
+    public function updateUser($id, $nombre, $password)
     {
-        $query = "UPDATE USER SET NOMBRE=:nombre,PASSWORD=:password,ROL=:rol WHERE IDUSER=:idUser";
+        $query = "UPDATE USER SET NOMBRE=:nombre,PASSWORD=:password WHERE IDUSER=:idUser";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
         $stmt->bindParam(":password", $password, PDO::PARAM_STR);
-        $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
+        // $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
         $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
         $stmt->execute();
     }

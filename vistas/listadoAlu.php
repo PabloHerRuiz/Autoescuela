@@ -20,6 +20,19 @@
         </div>
     </div>
 
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" id="cerrarModal">&times;</span>
+            <h2>Configuración</h2>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre">
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena">
+            <button id="guardarCambios">Guardar Cambios</button>
+        </div>
+    </div>
+
+
     <div id="botonAlta-list">
         <button id="irAlta">Dar de alta</button>
     </div>
