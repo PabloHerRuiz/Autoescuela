@@ -289,7 +289,7 @@ select {
     cursor: pointer;
 }
 
-#test-container{
+#test-container {
     margin-top: 10px;
     height: 600px;
     width: 100%;
@@ -303,28 +303,36 @@ select {
 /* examen */
 #exam-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas, la primera más grande */
-    grid-template-rows: auto auto auto; /* Tres filas automáticas */
-    gap: 20px; /* Espacio entre las cajas */
+    grid-template-columns: 1fr 1fr;
+    /* Dos columnas, la primera más grande */
+    grid-template-rows: auto auto auto;
+    /* Tres filas automáticas */
+    gap: 20px;
+    /* Espacio entre las cajas */
     padding: 20px;
 }
 
 .caja-grande {
-    grid-column: 2; /* Coloca la caja grande en la segunda columna */
-    grid-row: 1 / span 2; /* Ocupa dos filas desde la primera */
+    grid-column: 2;
+    /* Coloca la caja grande en la segunda columna */
+    grid-row: 1 / span 2;
+    /* Ocupa dos filas desde la primera */
     height: 200px;
     background-color: lightblue;
 }
 
 .caja-larga {
-    grid-row: 1 / span 2; /* Ocupa dos filas desde la primera */
+    grid-row: 1 / span 2;
+    /* Ocupa dos filas desde la primera */
     height: 400px;
     background-color: lightcoral;
 }
 
 .radio-buttons {
-    grid-column: 2; /* Coloca los botones en la primera columna */
-    grid-row: 2; /* Están en la segunda fila */
+    grid-column: 2;
+    /* Coloca los botones en la primera columna */
+    grid-row: 2;
+    /* Están en la segunda fila */
     display: block;
     margin-top: 50px;
     flex-direction: column;
@@ -349,42 +357,62 @@ select {
     box-sizing: border-box;
 }
 
-.timer{
-    grid-column: 1 / 2;
-    grid-row: 4/5;
-    background-color: rgb(255, 0, 234);
-    height: 30px;
+.timer-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+    height: 300px;
+    /* Ajusta la altura según tus necesidades */
+    background-color: black;
+    /* Fondo negro */
+    padding: 20px;
 }
-.terminar{
+
+.timer {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    height: 30px;
+    font-size: 24px;
+    text-align: center;
+    color: red;
+    /* Números en rojo */
+}
+
+.terminar {
     grid-column: 2;
     grid-row: 4/5;
     background-color: rgb(166, 255, 0);
     height: 30px;
 }
 
+#fin {
+    float: right;
+}
+
 /* Estilos para el contenido */
 .content {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .button-container {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
     height: 40%;
 }
 
 button {
     margin: 5px;
-    padding: 10px; 
-    width: 200px; 
+    padding: 10px;
+    width: 200px;
 }
 
 /* dar alta */
-#botonAlta-list{
+#botonAlta-list {
     display: flex;
     float: right;
 }

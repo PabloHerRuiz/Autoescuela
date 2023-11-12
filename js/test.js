@@ -169,7 +169,11 @@ window.addEventListener("load", function () {
             // Llamamos a la función getCor
             getCor().then(correctas => {
                 var aciertos = compararRespuestas(comprobacion, correctas);
-                console.log("estos son los aciertos " + aciertos);
+                var confirmacion = window.confirm("Has tenido "+aciertos+" aciertos");
+                if(confirmacion){
+                    document.location="?menu=test";
+                }
+                // console.log("estos son los aciertos " + aciertos);
             })
 
             var comprobacionDone = JSON.stringify(comprobacion);
@@ -195,6 +199,9 @@ window.addEventListener("load", function () {
                     console.log("intento creado");
                 })
 
+
+                
+                
         })
 
 
