@@ -8,10 +8,11 @@ class User
     private $rol;
 
     //constructor
-    public function __construct($idUser, $nombre, $password){
+    public function __construct($idUser, $nombre, $password,$rol){
         $this->idUser = $idUser;
         $this->nombre = $nombre;
         $this->password = $password;
+        $this->rol = $rol;
     }
 
 

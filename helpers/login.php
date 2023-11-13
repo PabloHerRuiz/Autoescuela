@@ -12,7 +12,7 @@ class Login
     {
         if ($usuario != null) {
             // Inicio de sesión exitoso
-            $user = new User($usuario["idUser"], $usuario["nombre"],$usuario["password"]);
+            $user = new User($usuario["idUser"], $usuario["nombre"],$usuario["password"],$usuario["rol"]);
             Sesion::login_sesion($user);
             return true;
         } else {

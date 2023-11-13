@@ -18,6 +18,11 @@ class Validator
         return true;
     }
 
+    public function verificaUser($rol)
+    {
+        //tengo que cambiar que devuelva true o false y hacer lo que tenga que hacer en cocnsecuencia
+        $this->errores[$rol] = "El usuario debe verificarse";
+    }
     //funcion que valida un email
     public function validaEmail($email)
     {

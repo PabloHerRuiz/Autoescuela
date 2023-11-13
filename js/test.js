@@ -177,7 +177,7 @@ window.addEventListener("load", function () {
                 var aciertos = compararRespuestas(comprobacion, correctas);
                 var confirmacion = window.confirm("Has tenido " + aciertos + " aciertos");
                 if (confirmacion) {
-                    document.location = "?menu=test";
+                    document.location = "?menu=test&rol="+rol;
                 }
                 // console.log("estos son los aciertos " + aciertos);
             })

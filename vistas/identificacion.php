@@ -28,7 +28,9 @@
                 $userRepository = new UserRepository($conn);
                 $user = $userRepository->encuentra($_POST['nombre'], md5($_POST['pass']));
                 if ($login->user_login($user)) {
-                    if ($user["rol"] == "admin") {
+                    if ($user["rol"] == null) {
+                        $valida->verificaUser("rol");
+                    } else if ($user["rol"] == "admin") {
                         header("location:?menu=homeadmin&rol=" . $user["rol"]);
                     } else {
                         header("location:?menu=home&rol=" . $user["rol"]);
@@ -40,6 +42,7 @@
 
     ?>
     <form action="index.php" method="post">
+        <?= $valida->ImprimirError('rol') ?>
         <h2>Login</h2>
         <p><input type="text" name="nombre" placeholder="Usuario"></p>
         <?= $valida->ImprimirError('nombre') ?>
