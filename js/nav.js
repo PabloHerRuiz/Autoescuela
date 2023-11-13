@@ -2,8 +2,7 @@ window.addEventListener("load", function () {
     const imgPerfil = document.getElementById("perfil");
     const imgAjustes = document.getElementById("ajustes");
     const imgCerrar = document.getElementById("cerrar");
-    const logo = document.getElementById("logo");
-
+    const logo = document.querySelector(".dropdown__text");
     var url = new URL(window.location.href);
 
     var rol = url.searchParams.get("rol");
@@ -21,11 +20,11 @@ window.addEventListener("load", function () {
 
     if (rol == "admin") {
         logo.addEventListener("click", function () {
-            document.location = "?menu=homeadmin";
+            document.location = "?menu=homeadmin&rol="+rol;
         });
     } else {
         logo.addEventListener("click", function () {
-            document.location = "?menu=home&rol="+rol;
+            document.location = "?menu=home&rol=" + rol;
         });
     }
 

@@ -28,8 +28,8 @@
                 $userRepository = new UserRepository($conn);
                 $user = $userRepository->encuentra($_POST['nombre'], md5($_POST['pass']));
                 if ($login->user_login($user)) {
-                    if ($user["rol"] == null) {
-                        $valida->verificaUser("rol");
+                    if ($valida->verificaUser($user["rol"])) {
+                        //nada
                     } else if ($user["rol"] == "admin") {
                         header("location:?menu=homeadmin&rol=" . $user["rol"]);
                     } else {

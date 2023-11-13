@@ -7,19 +7,10 @@
     <link rel="stylesheet" href="/css/estilosCreaPreg.css">
     <script src="/js/nav.js"></script>
     <script src="/js/user.js"></script>
+    <script src="https://kit.fontawesome.com/11fb434823.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="navbar">
-        <img id="logo" src="/css/imagenes/logo.png" alt="Logo">
-        <h1>Listado Alumnos</h1>
-        <div class="icons">
-            <img id="perfil" src="/css/imagenes/usuario.png" alt="Perfil">
-            <img id="ajustes" src="/css/imagenes/configuraciones.png" alt="Ajustes">
-            <img id="cerrar" src="/css/imagenes/cerrar-sesion.png" alt="Cierra sesion">
-        </div>
-    </div>
-
     <div id="miModal" class="modal">
         <div class="modal-contenido">
             <span class="cerrar" id="cerrarModal">&times;</span>

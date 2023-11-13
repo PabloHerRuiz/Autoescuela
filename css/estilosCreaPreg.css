@@ -1,17 +1,17 @@
-.navbar {
+/* .navbar {
     background-color: #868686;
     color: #fff;
     display: flex;
     justify-content: space-between;
     min-height: 20%;
-}
+} */
 
 body {
     overflow: hidden;
     min-height: 100vh;
 }
 
-.navbar img {
+/* .navbar img {
     height: 100px;
     width: 100px;
 }
@@ -30,8 +30,98 @@ body {
     width: 75px;
     height: 75px;
     margin-right: 10px;
+} */
+
+/* //navbar */
+
+#cuerpo{
+    display: contents;
 }
 
+.dropdown {
+    width: 100%;
+    filter: url(#goo);
+}
+
+.dropdown__face,
+.dropdown__items {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.dropdown__face {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.dropdown__text {
+    display: flex;
+    justify-content: start;
+}
+
+.dropdown__text img {
+    width: 75px;
+    height: 75px;
+}
+
+.dropdown__items {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    width: 10%;
+    list-style: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.93, 0.88, 0.1, 0.8);
+    border-radius: 25px;
+}
+
+.dropdown__items li:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dropdown__items i {
+    padding-right: 10px;
+}
+
+#dropdown {
+    display: none;
+}
+
+input:checked~.dropdown__items {
+    top: calc(100% + 25px);
+    visibility: visible;
+    opacity: 1;
+}
+
+body {
+    background-image: linear-gradient(140deg, #e2e2e2, #cdcdcd);
+    place-items: center;
+    font-family: "Lato", Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+svg {
+    display: none;
+}
+
+
+/* fin */
 h1 {
     font-size: 20px;
     font-weight: bold;
@@ -410,7 +500,7 @@ button {
 /* dar alta */
 #botonAlta-list {
     display: flex;
-    float: right;
+    float: left;
 }
 
 
