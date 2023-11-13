@@ -4,7 +4,7 @@
 
 <body>
     <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/header.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/principal/header.php';
     ?>
 
     <div id="cuerpo">

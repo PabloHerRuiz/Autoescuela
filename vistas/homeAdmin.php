@@ -15,6 +15,7 @@
             <button id="irCTest">Crear Test</button>
             <button id="irLTest">Listado Test</button>
             <button id="irLAlu">Listado Alumnos</button>
+            <button id="irGenT">Generar Test</button>
         </div>
     </div>
 </body>
