@@ -536,6 +536,29 @@ button {
     font-size: 20px;
 }
 
+.input-group {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.quantity-input {
+    display: inline-flex;
+    align-items: center;
+}
+
+.button-container {
+    text-align: center;
+}
+
+#cat-container{
+    padding-bottom: 10px;
+}
+
+
 input[type="text"],
 input[type="password"] {
     width: calc(100% - 20px);

@@ -9,11 +9,11 @@ class ExamenRepository
     }
 
     //CREAR
-    public function createExamen($idExamen, $fechaHora, $idUser)
+    public function createExamen($fechaHora, $idUser)
     {
-        $query = "INSERT INTO EXAMEN (idExamen,fechaHora,idUser) VALUES (:idExamen,:fechaHora,:idUser)";
+        $query = "INSERT INTO EXAMEN (fechaHora,User_idUser) VALUES (:fechaHora,:idUser)";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
+        // $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
         $stmt->bindParam(":fechaHora", $fechaHora, PDO::PARAM_STR);
         $stmt->bindParam(":idUser", $idUser, PDO::PARAM_INT);
         $stmt->execute();

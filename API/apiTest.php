@@ -46,5 +46,24 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo json_encode($exams);
     }
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    sesion::iniciar_sesion();
+    $user=sesion::leer_sesion("usuario");
+
+    // Obtén los datos enviados en la solicitud POST
+    $datos = json_decode(file_get_contents("php://input"), true);
+    $fechaActual = date("Y-m-d H:i:s");
+
+
+    $conn = db::abreconexion();
+    $examenRepository = new ExamenRepository($conn);
+    $examenRepository->createExamen($fechaActual,$user->getIdUser());
+
+    //ahora hay que ingeniarselas para coger las x preguntas al azar de la categoria seleccionada
+    //hay que meterlas en examen has preguntas
+
+
+}
 
 ?>

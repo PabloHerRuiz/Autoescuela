@@ -29,8 +29,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if(isset($_GET["cor"])){
-        $id=$_GET["id"];
+    if (isset($_GET["modo"])) {
+        $cat = $_GET["cat"];
+
+        $conn = db::abreconexion();
+        $preguntaRepository = new preguntaRepository($conn);
+        $max = $preguntaRepository->getMaxPregCat($cat);
+
+        echo json_encode($max);
+
+    } else if (isset($_GET["cor"])) {
+        $id = $_GET["id"];
         $conn = db::abreconexion();
         $preguntaRepository = new preguntaRepository($conn);
         $preguntas = $preguntaRepository->getAllCor($id);
@@ -44,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode($respuestas);
 
 
-    }else if (isset($_GET['id'])) {
+    } else if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $conn = db::abreconexion();
         $preguntaRepository = new preguntaRepository($conn);

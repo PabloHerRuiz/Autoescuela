@@ -85,6 +85,17 @@ class preguntaRepository
         return $result;
     }
 
+    //obtener el numero maximo de preguntas a generar de una categoria
+    public function getMaxPregCat($idCategoria)
+    {
+        $query = "SELECT count(*) FROM pregunta WHERE Categorias_idCategoria=:idCat";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":idCat", $idCategoria, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+        return $result;
+    }
+
 
 }
 ?>

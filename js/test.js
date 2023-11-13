@@ -3,7 +3,7 @@ window.addEventListener("load", function () {
     var url = new URL(window.location.href);
 
     var menu = url.searchParams.get("menu");
-    var rol=url.searchParams.get("rol");
+    var rol = url.searchParams.get("rol");
 
     if (menu == "test") {
         var contenedorTest = document.getElementById("test-container");
@@ -26,7 +26,7 @@ window.addEventListener("load", function () {
 
                             (function (elemento) {
                                 elemento.addEventListener("click", function () {
-                                    document.location = "?menu=examen&id=" + y[i].idExamen+"&rol="+rol;
+                                    document.location = "?menu=examen&id=" + y[i].idExamen + "&rol=" + rol;
                                 });
                             })(testAux);
 
@@ -108,14 +108,14 @@ window.addEventListener("load", function () {
                             testAux.setAttribute("data-id", y[i].id);
 
                             radioBtn = document.querySelector(".radio-buttons");
-                            radioBtn.style.display="none";
+                            radioBtn.style.display = "none";
 
                             (function (elemento, indice) {
                                 elemento.addEventListener("click", function () {
                                     caja = document.querySelector(".caja-grande");
                                     caja.innerHTML = y[indice].enunciado;
 
-                                    radioBtn.style.display="";
+                                    radioBtn.style.display = "";
 
                                     opciones = document.querySelectorAll(".resp");
                                     opciones[0].textContent = y[indice].op1;
@@ -177,7 +177,7 @@ window.addEventListener("load", function () {
                 var aciertos = compararRespuestas(comprobacion, correctas);
                 var confirmacion = window.confirm("Has tenido " + aciertos + " aciertos");
                 if (confirmacion) {
-                    document.location = "?menu=test&rol="+rol;
+                    document.location = "?menu=test&rol=" + rol;
                 }
                 // console.log("estos son los aciertos " + aciertos);
             })
@@ -249,6 +249,47 @@ window.addEventListener("load", function () {
         function ejecutarAlTerminar() {
             alert('¡El tiempo se ha acabado!');
         }
+
+
+    } else {
+        var cant = document.getElementById("cantidad");
+        var select = document.getElementById("botonCat");
+
+        select.addEventListener("change", function () {
+            var cat = select.value;
+            fetch("http://virtual.localpablo.com/API/apiPregunta.php?modo=maximo&cat=" + cat)
+                .then(x => x.text())
+                .then(y => {
+                    console.log(y);
+                    cant.max = y;
+                });
+        });
+
+        var genExamen = document.getElementById("genExamen");
+
+        genExamen.addEventListener("click", function () {
+            
+            var crear = {
+                "pregs": cant.value
+            };
+
+            crearJson=JSON.stringify(crear);
+            
+            fetch("http://virtual.localpablo.com/API/apiTest.php", {
+                method: "POST",
+                body: crearJson,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(x => x.text())
+                .then(y => {
+                    console.log(y);
+                });
+        })
+
+
 
 
     }
