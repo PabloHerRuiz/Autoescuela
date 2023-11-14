@@ -48,7 +48,7 @@ class IntentoRepository
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
         $stmt->execute();
-        $json = $stmt->fetch(PDO::FETCH_ASSOC);
+        $json = $stmt->fetchColumn();
         return $json;
     }
 

@@ -70,6 +70,7 @@ window.addEventListener("load", function () {
         fetch("http://virtual.localpablo.com/API/apiIntento.php")
             .then(x => x.json())
             .then(y => {
+                console.log(y);
                 if (y && y.length > 0) {
                     let tableContent = "";
                     y.forEach(datos => {
