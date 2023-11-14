@@ -52,5 +52,16 @@ class IntentoRepository
         return $json;
     }
 
+    //devuelvo todos los intentos
+    public function getALLIntentos($idUser){
+        $query = "SELECT * FROM INTENTOS WHERE USER_IDUSER=:IDUSER";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":IDUSER", $idUser, PDO::PARAM_INT);
+        $stmt->execute();
+        $result= $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+
 }
 ?>

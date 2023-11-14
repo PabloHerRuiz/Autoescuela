@@ -36,6 +36,73 @@ window.addEventListener("load", function () {
                         }
                     })
             })
+
+        var play = true;
+
+        var datosAlu = document.getElementById("tabla-container");
+        var mostrartabla = document.getElementById("mostrartabla");
+        var tabla = document.getElementById("tabla");
+        var tbody = document.getElementById("bodyTabla");
+
+        mostrartabla.addEventListener("click", function () {
+
+            if (play) {
+                datosAlu.style.transition = 'width 0.5s ease-in-out';
+                datosAlu.style.width = '30%';
+                tabla.style.display = "table";
+                play = false;
+                setTimeout(function () {
+                    tabla.style.opacity = 1;
+                }, 700);
+
+            } else {
+
+                datosAlu.style.transition = 'width 0.5s ease-in-out';
+                datosAlu.style.width = '0%';
+                tabla.style.display = "none";
+                play = true;
+                setTimeout(function () {
+                    tabla.style.display = "none";
+                }, 500);
+            }
+        })
+
+        fetch("http://virtual.localpablo.com/API/apiIntento.php")
+            .then(x => x.json())
+            .then(y => {
+                if (y && y.length > 0) {
+                    let tableContent = "";
+                    y.forEach(datos => {
+                        tableContent += `<tr>`;
+                        tableContent += `<td>${datos.idExamen}</td>`;
+                        tableContent += `<td>${datos.aciertos}</td>`;
+                        tableContent += `<td><a class="reintentar" href="?menu=examen&id=${datos.idExamen}&rol=${rol}"><img src="/css/imagenes/reintentar.png"></a></td>`;
+
+                        tableContent += `</tr>`;
+
+                    });
+                    tbody.innerHTML = tableContent;
+                }
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     } else if (menu == "examen") {
         var contenedorExamen = document.querySelector(".caja-alargada");
         var id = url.searchParams.get("id");
@@ -185,7 +252,6 @@ window.addEventListener("load", function () {
             var comprobacionDone = JSON.stringify(comprobacion);
             //hay que cambiar esto con el id del usuario del sesion start pero ahora mismo me da pereza
             var jsonRaw = {
-                "idUser": 1,
                 "json": comprobacionDone
             };
 

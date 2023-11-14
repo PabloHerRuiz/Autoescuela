@@ -34,7 +34,7 @@ body {
 
 /* //navbar */
 
-#cuerpo{
+#cuerpo {
     display: contents;
 }
 
@@ -181,11 +181,11 @@ select {
     margin: 0;
 }
 
-.navbar .icons img:hover {
+/* .navbar .icons img:hover {
     border: 2px black solid;
     padding: 2px;
     cursor: pointer;
-}
+} */
 
 #contenedor img {
     width: 75px;
@@ -247,32 +247,55 @@ select {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 50%;
+    max-width: 50%;
     height: 500px;
+    flex: 1;
 }
 
 #cuadrado-exterior {
-    width: 80px;
-    height: 80px;
+    width: 180px;
+    height: 190px;
     border: 2px solid #ccc;
     margin-top: 20px;
+    border-radius: 10px;
 }
 
 #cuadrado-interior {
-    width: 60px;
-    height: 60px;
+    width: 156px;
+    height: 165px;
     background-color: #ccc;
     margin: 10px;
+    border-radius: 5px;
 }
 
 #info-text {
     text-align: left;
+    font-family: Arial, sans-serif;
+    color: #333;
 }
 
 #info-text p {
     margin: 5px 0;
 }
 
+.cuadrado {
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    margin: 0 auto 10px;
+}
+
+.nombrelista {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nombreperfil {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* alumno */
 .alumno {
     background-color: #f1f1f1;
     border: 1px solid #ddd;
@@ -283,11 +306,6 @@ select {
 .alumno:hover {
     cursor: pointer;
     border: 2px solid #000;
-}
-
-.nombrelista {
-    font-weight: bold;
-    /* Texto en negrita */
 }
 
 #alumnos-container {
@@ -320,18 +338,7 @@ select {
     box-sizing: border-box;
 }
 
-.cuadrado {
-    width: 50px;
-    height: 50px;
-    background-color: #007bff;
-    margin: 0 auto 10px;
-}
-
-.nombrelista {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
+/* alta */
 .botones-administracion {
     display: flex;
     justify-content: space-between;
@@ -383,12 +390,69 @@ select {
 #test-container {
     margin-top: 10px;
     height: 600px;
-    width: 100%;
+    width: 94%;
     border: 1px solid black;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     overflow-y: auto;
+    margin-left: 100px;
+}
+
+/* estadistica */
+
+.estadisticas {
+    height: 88vh;
+    width: 88px;
+    position: fixed;
+    display: flex;
+    z-index: 50;
+    background-color: #7700ff;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.estadisticas img{
+    height: 75px;
+    width: 75px;
+}
+.datos{
+    height: 100vh;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    background-color: #7be0ff
+}
+
+#tabla {
+    display: none;
+    opacity: 0;
+    margin-top: 20px;
+    margin-left: 100px;
+    border-collapse: collapse;
+    width: 80%;
+    overflow-y: auto;
+}
+
+#tabla th, #tabla td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#tabla th {
+    background-color: #f2f2f2;
+}
+.reintentar{
+    width: 75px;
+    height: 75px;
+}
+.reintentar img{
+    width: 75px;
+    height: 75px;
+    padding: 10px;
+    margin: -10px;
 }
 
 /* examen */
@@ -555,7 +619,7 @@ button {
     text-align: center;
 }
 
-#cat-container{
+#cat-container {
     padding-bottom: 10px;
 }
 
