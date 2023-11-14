@@ -2,7 +2,8 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . '/helpers/autocargador.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_GET['modo'] == "actualizar") {
+    // if ($_GET['modo'] == "actualizar") {
+    if (isset($_GET['modo'])) {
 
         // Obtén los datos enviados en la solicitud POST
         $datos = json_decode(file_get_contents("php://input"), true);
@@ -16,17 +17,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     } else {
-
+        // $valida = new Validator();
         // Obtén los datos enviados en la solicitud POST
         $datos = json_decode(file_get_contents("php://input"), true);
+
         if ($datos) {
+            // if (
+            //     ($valida->RequeridoApi("op1", $datos)) &&
+            //     ($valida->RequeridoApi("op2", $datos)) &&
+            //     ($valida->RequeridoApi("op3", $datos)) &&
+            //     ($valida->RequeridoApi("cor", $datos)) &&
+            //     ($valida->RequeridoApi("enun", $datos)) &&
+            //     ($valida->RequeridoApi("dif", $datos)) &&
+            //     ($valida->RequeridoApi("cat", $datos))
+            // ) {
+
+
             // Llama a la función createPregunta con los datos
             $conn = db::abreConexion();
             $preguntaRepository = new preguntaRepository($conn);
             $preguntaRepository->createPregunta($datos['op1'], $datos['op2'], $datos['op3'], $datos['cor'], $datos['enun'], $datos['dif'], $datos['cat']);
             // Devuelve una respuesta
             echo '{"respuesta":"OK"}';
+
+
         }
+        // else{
+        //     echo '{"respuesta":"ERROR"}';
+        //     sesion::iniciar_sesion();
+        //     sesion::guardar_sesion("errores",$valida->getErrores());
+        // }
+
+        // }
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET["todo"])) {

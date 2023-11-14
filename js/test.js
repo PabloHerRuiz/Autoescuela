@@ -252,6 +252,7 @@ window.addEventListener("load", function () {
 
 
     } else {
+        //generar examen
         var cant = document.getElementById("cantidad");
         var select = document.getElementById("botonCat");
         var genExamen = document.getElementById("genExamen");

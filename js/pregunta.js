@@ -33,6 +33,40 @@ window.addEventListener("load", function () {
 
         console.log(pregunta);
 
+
+        // Almacenar mensajes de error
+        var errores = [];
+
+        // Validar que los campos no estén vacíos
+        if (dificultad.value === "") {
+            errores.push('Por favor, selecciona una dificultad.');
+        }
+        if (categoria.value === "") {
+            errores.push('Por favor, selecciona una categoría.');
+        }
+        if (enunciado.value === "") {
+            errores.push('Por favor, ingresa el enunciado.');
+        }
+        if (op1.value === "") {
+            errores.push('Por favor, ingresa la opción 1.');
+        }
+        if (op2.value === "") {
+            errores.push('Por favor, ingresa la opción 2.');
+        }
+        if (op3.value === "") {
+            errores.push('Por favor, ingresa la opción 3.');
+        }
+        if (correcta.value === "") {
+            errores.push('Por favor, selecciona la opción correcta.');
+        }
+
+        // Mostrar alerta con mensajes de error
+        if (errores.length > 0) {
+            alert('Todos los campos son obligatorios. Por favor, completa todos los campos:\n\n' + errores.join('\n'));
+            return;
+        }
+
+
         var preguntaJson = JSON.stringify(pregunta);
 
         // Realiza la solicitud POST
@@ -46,7 +80,7 @@ window.addEventListener("load", function () {
         })
             .then(x => x.text())
             .then(y => {
-
+                console.log(y);
                 // document.location = "?menu=crea";
                 ActualizaListado();
                 console.log("pregunta creada");
@@ -157,6 +191,9 @@ window.addEventListener("load", function () {
                 ActualizaListado();
                 console.log("pregunta actualizada");
             })
+        imgGuardar.style.display = "";
+        imgActualizar.style.display = "none";
+        imgBorrar.style.display = "none";
     });
 
     //AGREGAR
@@ -174,20 +211,25 @@ window.addEventListener("load", function () {
     //BORRAR
 
     imgBorrar.addEventListener("click", function () {
+        var confirmacion = window.confirm("¿Estás seguro de que quieres eliminar este elemento?");
         var borrar = document.querySelector(".id").value;
-
-        // Realiza la solicitud DELETE
-        fetch("http://virtual.localpablo.com/API/apiPregunta.php?id=" + borrar, {
-            method: "DELETE"
-        })
-            .then(x => x.text())
-            .then(y => {
-
-                // document.location = "?menu=crea";
-                ActualizaListado();
-                console.log("pregunta borrada");
-
+        if (confirmacion) {
+            // Realiza la solicitud DELETE
+            fetch("http://virtual.localpablo.com/API/apiPregunta.php?id=" + borrar, {
+                method: "DELETE"
             })
+                .then(x => x.text())
+                .then(y => {
+
+                    // document.location = "?menu=crea";
+                    ActualizaListado();
+                    console.log("pregunta borrada");
+
+                })
+            imgGuardar.style.display = "";
+            imgActualizar.style.display = "none";
+            imgBorrar.style.display = "none";
+        }
     });
 
     //que cuando se actualice borre o guarde todo se vuelva en blanco

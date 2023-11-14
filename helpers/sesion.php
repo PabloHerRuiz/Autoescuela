@@ -28,6 +28,10 @@ class Sesion
         }
 
     }
+    //borrar clave valor
+    public static function borrarClave($clave){
+        unset($_SESSION[$clave]);
+    }
 
     //comprueba si existe valor
     public static function esta_logueado()

@@ -17,6 +17,14 @@ class Validator
         }
         return true;
     }
+    // public function RequeridoApi($campo, $contenedor)
+    // {
+    //     if (!isset($contenedor[$campo]) || trim($contenedor[$campo]) === '') {
+    //         $this->errores[$campo] = "El campo $campo no puede estar vacio";
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
     public function verificaUser($rol)
     {
@@ -42,7 +50,7 @@ class Validator
     //funcion que devuelve un array de errores
     public function getErrores()
     {
-
+        return $this->errores;
     }
 
     //por comentar
@@ -79,6 +87,12 @@ class Validator
         return
             isset($this->errores[$campo]) ? '<span class="error_mensaje">' . $this->errores[$campo] . '</span>' : '';
     }
+    //setter
+    public function setErrores($errores)
+    {
+        $this->errores = $errores;
 
+        return $this;
+    }
 }
 ?>
