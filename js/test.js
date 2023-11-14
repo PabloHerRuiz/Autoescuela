@@ -271,6 +271,22 @@ window.addEventListener("load", function () {
         genExamen.addEventListener("click", function () {
             var cat = select.value;
 
+            //manejar error
+            // Almacenar mensajes de error
+            var errores = [];
+            // Validar que los campos no estén vacíos
+            if (select.value === "") {
+                errores.push('Por favor, selecciona una categoria.');
+            }
+
+            // Mostrar alerta con mensajes de error
+            if (errores.length > 0) {
+                alert(errores);
+                // alert('Todos los campos son obligatorios. Por favor, completa todos los campos:\n\n' + errores.join('\n'));
+                return;
+            }
+
+
             fetch("http://virtual.localpablo.com/API/apiPregunta.php?todo=1&cat=" + cat)
                 .then(x => x.json())
                 .then(y => {
@@ -284,14 +300,14 @@ window.addEventListener("load", function () {
 
                     crearJson = JSON.stringify(crear);
 
-                    if(menu=="homeadmin"){
-                        var todos=document.getElementById("check");
-                        if(todos.checked==true){
-                            var id=1;
+                    if (menu == "homeadmin") {
+                        var todos = document.getElementById("check");
+                        if (todos.checked == true) {
+                            var id = 1;
                         }
                     }
                     // Creamos el examen con las preguntas
-                    fetch("http://virtual.localpablo.com/API/apiTest.php?id="+id, {
+                    fetch("http://virtual.localpablo.com/API/apiTest.php?id=" + id, {
                         method: "POST",
                         body: crearJson,
                         headers: {
