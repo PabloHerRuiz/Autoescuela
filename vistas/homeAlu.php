@@ -41,7 +41,7 @@
     <div class="content">
         <div class="button-container">
             <button id="irTest">Test</button>
-            <button id="irTestERR">Test de Errores</button>
+            <button id="irTestERR" title="MANTENIMIENTO">Test de Errores</button>
             <button id="irGenT">Generar Test</button>
         </div>
     </div>
