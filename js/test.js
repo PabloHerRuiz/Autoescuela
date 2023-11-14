@@ -284,8 +284,14 @@ window.addEventListener("load", function () {
 
                     crearJson = JSON.stringify(crear);
 
+                    if(menu=="homeadmin"){
+                        var todos=document.getElementById("check");
+                        if(todos.checked==true){
+                            var id=1;
+                        }
+                    }
                     // Creamos el examen con las preguntas
-                    fetch("http://virtual.localpablo.com/API/apiTest.php", {
+                    fetch("http://virtual.localpablo.com/API/apiTest.php?id="+id, {
                         method: "POST",
                         body: crearJson,
                         headers: {

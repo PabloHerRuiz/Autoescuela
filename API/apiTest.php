@@ -59,8 +59,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $conn = db::abreconexion();
     $examenRepository = new ExamenRepository($conn);
-    $examenRepository->createExamen($fechaActual, $user->getIdUser());
 
+    
+    //examen para todos o para el propio usuario
+    if ($_GET["id"]==1) {
+        $id = $_GET["id"];
+        $examenRepository->createExamen($fechaActual, $id);
+    } else {
+        $examenRepository->createExamen($fechaActual, $user->getIdUser());
+    }
     $ultimaId = $examenRepository->lastId();
 
     if ($datos["id"]) {

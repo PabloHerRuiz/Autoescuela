@@ -26,6 +26,10 @@
                 <div class="quantity-input">
                     <input type="number" id="cantidad" name="cantidad" value="1" min="1">
                 </div>
+                <div class="checks">
+                    <label for="check">TODOS:</label>
+                    <input type="checkbox" id="check">
+                </div>
             </div>
             <div class="button-container">
                 <button id="genExamen">Generar Examen</button>
