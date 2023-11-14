@@ -240,22 +240,23 @@ select {
 
 /* //listado alumno */
 #info-container {
-    border: 2px solid #ccc;
+    border: 2px solid #9d9494;
     padding: 10px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    max-width: 50%;
-    height: 500px;
+    max-width: 38%;
+    margin-left: 110px;
+    height: 600px;
     flex: 1;
 }
 
 #cuadrado-exterior {
     width: 180px;
     height: 190px;
-    border: 2px solid #ccc;
+    border: 2px solid #838383;
     margin-top: 20px;
     border-radius: 10px;
 }
@@ -470,11 +471,10 @@ select {
 
 .caja-grande {
     grid-column: 2;
-    /* Coloca la caja grande en la segunda columna */
     grid-row: 1 / span 2;
-    /* Ocupa dos filas desde la primera */
     height: 200px;
-    background-color: lightblue;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .caja-larga {
@@ -485,14 +485,13 @@ select {
 }
 
 .radio-buttons {
+    border: 2px solid black;
     grid-column: 2;
-    /* Coloca los botones en la primera columna */
     grid-row: 2;
-    /* Están en la segunda fila */
     display: block;
     margin-top: 50px;
-    flex-direction: column;
-    background-color: darkorchid;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .radio-button {
