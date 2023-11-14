@@ -230,7 +230,7 @@ window.addEventListener("load", function () {
                     })
             }
             // Borra el elemento con la clave "respuestas" del localStorage
-            // localStorage.removeItem("respuestas");
+            localStorage.removeItem("respuestas");
         })
 
         //timer
