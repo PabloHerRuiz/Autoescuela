@@ -74,10 +74,10 @@ body {
     width: 10%;
     list-style: none;
     list-style-type: none;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
-    z-index: -1;
+    z-index: 1;
     opacity: 0;
     transition: all 0.4s cubic-bezier(0.93, 0.88, 0.1, 0.8);
     border-radius: 25px;
@@ -99,6 +99,7 @@ body {
 }
 
 input:checked~.dropdown__items {
+    display: flex;
     top: calc(100% + 25px);
     visibility: visible;
     opacity: 1;

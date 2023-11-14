@@ -51,13 +51,33 @@ class ExamenRepository
     //obtener todas los examenes
     public function getAllTest($idExamen)
     {
-        $query = "SELECT * FROM PREGUNTA WHERE IDPREGUNTA IN (SELECT Pregunta_idPregunta FROM examen_has_pregunta WHERE Examen_idExamen=:idExamen);";
+        $query = "SELECT * FROM PREGUNTA WHERE IDPREGUNTA IN (SELECT Pregunta_idPregunta FROM examen_has_pregunta WHERE Examen_idExamen=:idExamen)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    //obtener el ultimo id
+    public function lastId(){
+        $query = "SELECT MAX(idExamen) FROM examen";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+        return $result;
+    }
+
+
+    //añadir pregunta a examen
+    public function addPreg($idExamen, $idPregunta){
+        $query = "INSERT INTO examen_has_pregunta (Examen_idExamen,Pregunta_idPregunta) values (:idExamen,:idPregunta)";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":idExamen", $idExamen, PDO::PARAM_INT);
+        $stmt->bindParam(":idPregunta", $idPregunta, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 
 }
 

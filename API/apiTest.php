@@ -45,11 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         header('Content-Type: application/json');
         echo json_encode($exams);
     }
-}
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+}else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     sesion::iniciar_sesion();
-    $user=sesion::leer_sesion("usuario");
+    $user = sesion::leer_sesion("usuario");
 
     // Obtén los datos enviados en la solicitud POST
     $datos = json_decode(file_get_contents("php://input"), true);
@@ -58,12 +57,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn = db::abreconexion();
     $examenRepository = new ExamenRepository($conn);
-    $examenRepository->createExamen($fechaActual,$user->getIdUser());
+    $examenRepository->createExamen($fechaActual, $user->getIdUser());
 
-    //ahora hay que ingeniarselas para coger las x preguntas al azar de la categoria seleccionada
-    //hay que meterlas en examen has preguntas
+    $ultimaId = $examenRepository->lastId();
 
+    if ($datos["id"]) {
 
+        foreach ($datos["id"] as $dato) {
+            $examenRepository->addPreg($ultimaId, $dato["id"]);
+        }
+
+        echo '{"respuesta":"OK"}';
+    }
 }
 
 ?>

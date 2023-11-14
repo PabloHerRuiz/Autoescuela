@@ -254,6 +254,7 @@ window.addEventListener("load", function () {
     } else {
         var cant = document.getElementById("cantidad");
         var select = document.getElementById("botonCat");
+        var genExamen = document.getElementById("genExamen");
 
         select.addEventListener("change", function () {
             var cat = select.value;
@@ -261,33 +262,43 @@ window.addEventListener("load", function () {
                 .then(x => x.text())
                 .then(y => {
                     console.log(y);
+                    cant.value = y;
                     cant.max = y;
                 });
         });
 
-        var genExamen = document.getElementById("genExamen");
-
         genExamen.addEventListener("click", function () {
-            
-            var crear = {
-                "pregs": cant.value
-            };
+            var cat = select.value;
 
-            crearJson=JSON.stringify(crear);
-            
-            fetch("http://virtual.localpablo.com/API/apiTest.php", {
-                method: "POST",
-                body: crearJson,
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(x => x.text())
+            fetch("http://virtual.localpablo.com/API/apiPregunta.php?todo=1&cat=" + cat)
+                .then(x => x.json())
                 .then(y => {
-                    console.log(y);
+                    var idPregs = y;
+                    idPregs.sort(function (a, b) { return Math.random() - 0.5 });
+                    idPregs.splice(cant.value);
+
+                    var crear = {
+                        "id": idPregs
+                    };
+
+                    crearJson = JSON.stringify(crear);
+
+                    // Creamos el examen con las preguntas
+                    fetch("http://virtual.localpablo.com/API/apiTest.php", {
+                        method: "POST",
+                        body: crearJson,
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(x => x.text())
+                        .then(y => {
+                            console.log(y);
+                        })
                 });
-        })
+        });
+
 
 
 

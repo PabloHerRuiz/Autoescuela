@@ -29,7 +29,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (isset($_GET["modo"])) {
+    if (isset($_GET["todo"])) {
+        $cat = $_GET["cat"];
+
+        $conn = db::abreconexion();
+        $preguntaRepository = new preguntaRepository($conn);
+        $preguntas = $preguntaRepository->getPregCat($cat);
+
+        $preg = [];
+        foreach ($preguntas as $pregunta) {
+            $preg = [
+                "id" => $pregunta['idPregunta']
+            ];
+            $pregs[] = $preg;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($pregs);
+
+    } else if (isset($_GET["modo"])) {
         $cat = $_GET["cat"];
 
         $conn = db::abreconexion();

@@ -96,6 +96,17 @@ class preguntaRepository
         return $result;
     }
 
+    //obtener las preguntas de una categoria
+    public function getPregCat($idCategoria)
+    {
+        $query = "SELECT idPregunta FROM pregunta WHERE Categorias_idCategoria=:idCat";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":idCat", $idCategoria, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 
 }
 ?>
