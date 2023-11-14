@@ -501,7 +501,7 @@ button {
 /* dar alta */
 #botonAlta-list {
     display: flex;
-    float: left;
+    float: right;
 }
 
 
