@@ -30,9 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo json_encode($exams);
 
     } else {
+        sesion::iniciar_sesion();
+        $idUser = sesion::leer_sesion("usuario");
         $conn = db::abreconexion();
         $examenRepository = new ExamenRepository($conn);
-        $examenes = $examenRepository->getAllExam();
+        $examenes = $examenRepository->getAllExam($idUser->getIdUser());
 
         $exam = [];
         foreach ($examenes as $examen) {
@@ -45,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         header('Content-Type: application/json');
         echo json_encode($exams);
     }
-}else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+} else if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     sesion::iniciar_sesion();
     $user = sesion::leer_sesion("usuario");
