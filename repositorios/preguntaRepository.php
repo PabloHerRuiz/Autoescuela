@@ -110,40 +110,40 @@ class preguntaRepository
     }
 
     // Función para comparar respuestas
-    // function compararRespuestas($respuestasEstudiante, $respuestasCorrectas)
-    // {
-    //     $aciertos = 0;
+    function compararRespuestas($respuestasEstudiante, $respuestasCorrectas)
+    {
+        $aciertos = 0;
 
-    //     foreach ($respuestasEstudiante as $pregunta => $respuesta) {
-    //         // Compara la respuesta del estudiante con la respuesta correcta
-    //         if ($respuesta === $respuestasCorrectas[$pregunta]) {
-    //             $aciertos++;
-    //         }
-    //     }
-
-    //     return $aciertos;
-    // }
-
-// Función para comparar respuestas
-function compararRespuestas($respuestasEstudiante, $respuestasCorrectas)
-{
-    $aciertos = 0;
-
-    foreach ($respuestasCorrectas as $pregunta => $respuestaCorrecta) {
-        // Verifica si la pregunta está presente en las respuestas del estudiante
-        if (array_key_exists($pregunta, $respuestasEstudiante)) {
+        foreach ($respuestasEstudiante as $pregunta => $respuesta) {
             // Compara la respuesta del estudiante con la respuesta correcta
-            if ($respuestasEstudiante[$pregunta] === $respuestaCorrecta) {
+            if ($respuesta === $respuestasCorrectas[$pregunta]) {
                 $aciertos++;
             }
-        } else {
-            // Maneja el caso en que la pregunta no está presente en las respuestas del estudiante
-            // Puedes decidir cómo manejarlo, por ejemplo, considerar esto como una respuesta incorrecta
         }
+
+        return $aciertos;
     }
 
-    return $aciertos;
-}
+// Función para comparar respuestas
+// function compararRespuestas($respuestasEstudiante, $respuestasCorrectas)
+// {
+//     $aciertos = 0;
+
+//     foreach ($respuestasCorrectas as $pregunta => $respuestaCorrecta) {
+//         // Verifica si la pregunta está presente en las respuestas del estudiante
+//         if (array_key_exists($pregunta, $respuestasEstudiante)) {
+//             // Compara la respuesta del estudiante con la respuesta correcta
+//             if ($respuestasEstudiante[$pregunta] === $respuestaCorrecta) {
+//                 $aciertos++;
+//             }
+//         } else {
+//             // Maneja el caso en que la pregunta no está presente en las respuestas del estudiante
+//             // Puedes decidir cómo manejarlo, por ejemplo, considerar esto como una respuesta incorrecta
+//         }
+//     }
+
+//     return $aciertos;
+// }
 
 
 }

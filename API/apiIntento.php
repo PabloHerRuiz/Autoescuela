@@ -47,23 +47,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $preguntas = $preguntaRepository->getAllCor($idExamen);
 
         $correctas = [];
-    
+
         foreach ($preguntas as $index => $pregunta) {
             $correctas["r" . ($index + 1)] = strval($pregunta['correcta']);
         }
         $comprobar = $intentoRepository->getJSON($idExamen);
-        $comprobar=json_decode($comprobar,true);
+        $comprobar = json_decode($comprobar, true);
         $aciertos = $preguntaRepository->compararRespuestas($comprobar, $correctas);
-
         $int = [
             "idExamen" => $intento['Examen_idExamen'],
-            //cambiar el tres por los aciertos reales
             "aciertos" => $aciertos
         ];
         $ints[] = $int;
 
     }
-    
+
     header('Content-Type: application/json');
     echo json_encode($ints);
 

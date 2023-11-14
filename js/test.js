@@ -21,7 +21,7 @@ window.addEventListener("load", function () {
                         console.log(y);
                         for (let i = 0; i < y.length; i++) {
                             var testAux = test.cloneNode(true);
-                            testAux.getElementsByClassName("idtest")[0].innerHTML = i;
+                            testAux.getElementsByClassName("idtest")[0].innerHTML = (i + 1);
                             testAux.setAttribute("data-id", y[i].idExamen);
 
                             (function (elemento) {
@@ -155,7 +155,7 @@ window.addEventListener("load", function () {
                         console.log(y);
                         for (let i = 0; i < y.length; i++) {
                             var testAux = test.cloneNode(true);
-                            testAux.getElementsByClassName("idtest")[0].innerHTML = i;
+                            testAux.getElementsByClassName("idtest")[0].innerHTML = (i + 1);
                             testAux.setAttribute("data-id", y[i].id);
 
                             radioBtn = document.querySelector(".radio-buttons");
@@ -208,29 +208,27 @@ window.addEventListener("load", function () {
 
             var jsonDone = JSON.stringify(jsonRaw);
 
-            fetch("http://virtual.localpablo.com/API/apiIntento.php?id=" + id, {
-                method: "POST",
-                body: jsonDone,
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(x => x.text())
-                .then(y => {
-                    // aciertos = y;
-                    console.log("intento creado");
-                    // Muestra la ventana de confirmación con la variable aciertos
-                    var confirmacion = window.confirm('¿Estas seguro de finalizar el Examen?');
+            // Muestra la ventana de confirmación con la variable aciertos
+            var confirmacion = window.confirm('¿Estás seguro de finalizar el Examen?');
 
-                    // Si el usuario hace clic en "Aceptar"
-                    if (confirmacion) {
-                        // Puedes agregar más acciones aquí si el usuario hace clic en "Aceptar"
-                        console.log('El usuario ha hecho clic en Aceptar');
-                        document.location = "?menu=test&rol=" + rol;
+            // Si el usuario hace clic en "Aceptar"
+            if (confirmacion) {
+                fetch("http://virtual.localpablo.com/API/apiIntento.php?id=" + id, {
+                    method: "POST",
+                    body: jsonDone,
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     }
                 })
-
+                    .then(x => x.text())
+                    .then(y => {
+                        // aciertos = y;
+                        console.log("intento creado");
+                        console.log(y);
+                        document.location = "?menu=test&rol=" + rol;
+                    })
+            }
             // Borra el elemento con la clave "respuestas" del localStorage
             // localStorage.removeItem("respuestas");
         })
