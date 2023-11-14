@@ -422,7 +422,7 @@ select {
     width: 0px;
     position: fixed;
     z-index: 1;
-    background-color: #7be0ff
+    background-color: #a5a5a5
 }
 
 #tabla {
@@ -442,6 +442,7 @@ select {
 }
 
 #tabla th {
+    position: sticky;
     background-color: #f2f2f2;
 }
 .reintentar{

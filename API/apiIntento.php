@@ -12,8 +12,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = db::abreconexion();
     $intentoRepository = new IntentoRepository($conn);
     $intentoRepository->createIntento($id, $datos['json'], $user->getIdUser());
+    $preguntaRepository= new preguntaRepository($conn);
+    $preguntas=$preguntaRepository->getAllCor($id);
 
-    echo '{"respuesta":"OK"}';
+    $correctas = [];
+
+    foreach ($preguntas as $index => $pregunta) {
+        $correctas["r" . ($index + 1)] = strval($pregunta['correcta']);
+    }
+
+    $comprobar=json_decode($datos["json"],true);
+
+    $aciertos=$preguntaRepository->compararRespuestas($comprobar,$correctas);
+
+    echo $aciertos;
 
 } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
     
@@ -28,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($intentos as $intento) {
             $int = [
                 "idExamen" => $intento['Examen_idExamen'],
+                //cambiar el tres por los aciertos reales
                 "aciertos" => 3
             ];
             $ints[] = $int;

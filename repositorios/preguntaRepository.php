@@ -74,16 +74,7 @@ class preguntaRepository
         return $result;
     }
 
-    //obtener las respusetas de un examen
-    public function getAllCor($idExamen)
-    {
-        $query = "select correcta from pregunta where idPregunta in (SELECT pregunta_idpregunta from examen_has_pregunta where examen_idExamen=:idexamen)";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(":idexamen", $idExamen, PDO::PARAM_INT);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    }
+
 
     //obtener el numero maximo de preguntas a generar de una categoria
     public function getMaxPregCat($idCategoria)
@@ -106,7 +97,32 @@ class preguntaRepository
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    
+    //obtener las respusetas de un examen
+    public function getAllCor($idExamen)
+    {
+        $query = "select correcta from pregunta where idPregunta in (SELECT pregunta_idpregunta from examen_has_pregunta where examen_idExamen=:idexamen)";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":idexamen", $idExamen, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
+    // Función para comparar respuestas
+    function compararRespuestas($respuestasEstudiante, $respuestasCorrectas)
+    {
+        $aciertos = 0;
+
+        foreach ($respuestasEstudiante as $pregunta => $respuesta) {
+            // Compara la respuesta del estudiante con la respuesta correcta
+            if ($respuesta === $respuestasCorrectas[$pregunta]) {
+                $aciertos++;
+            }
+        }
+
+        return $aciertos;
+    }
 
 }
 ?>

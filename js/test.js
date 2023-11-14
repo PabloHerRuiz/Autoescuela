@@ -86,23 +86,6 @@ window.addEventListener("load", function () {
             })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     } else if (menu == "examen") {
         var contenedorExamen = document.querySelector(".caja-alargada");
         var id = url.searchParams.get("id");
@@ -210,47 +193,14 @@ window.addEventListener("load", function () {
                     })
             })
 
-        //conseguimos las respuestas correctas en formato json
-        function getCor() {
-            return fetch("http://virtual.localpablo.com/API/apiPregunta.php?cor=1&id=" + id)
-                .then(x => x.json())
-                .then(y => {
-                    return y; // Devolvemos el valor para que esté disponible en la cadena then siguiente
-                });
-        }
 
-        //comprobar preguntas
-        function compararRespuestas(respuestasEstudiante, respuestasCorrectas) {
-            var aciertos = 0;
-
-            for (var pregunta in respuestasEstudiante) {
-                // Compara la respuesta del estudiante con la respuesta correcta
-                if (respuestasEstudiante[pregunta] === respuestasCorrectas[pregunta]) {
-                    aciertos++;
-                }
-            }
-
-            return aciertos;
-        }
 
         //finalizar examen
         var btnFinalizar = document.querySelector("#fin");
-
         btnFinalizar.addEventListener("click", function () {
+
             var comprobacion = getResp();
-
-            // Llamamos a la función getCor
-            getCor().then(correctas => {
-                var aciertos = compararRespuestas(comprobacion, correctas);
-                var confirmacion = window.confirm("Has tenido " + aciertos + " aciertos");
-                if (confirmacion) {
-                    document.location = "?menu=test&rol=" + rol;
-                }
-                // console.log("estos son los aciertos " + aciertos);
-            })
-
             var comprobacionDone = JSON.stringify(comprobacion);
-            //hay que cambiar esto con el id del usuario del sesion start pero ahora mismo me da pereza
             var jsonRaw = {
                 "json": comprobacionDone
             };
@@ -267,18 +217,27 @@ window.addEventListener("load", function () {
             })
                 .then(x => x.text())
                 .then(y => {
-                    console.log(y);
+                    // aciertos = y;
                     console.log("intento creado");
+                    // Muestra la ventana de confirmación con la variable aciertos
+                    var confirmacion = window.confirm('¿Estas seguro de finalizar el Examen?');
+
+                    // Si el usuario hace clic en "Aceptar"
+                    if (confirmacion) {
+                        // Puedes agregar más acciones aquí si el usuario hace clic en "Aceptar"
+                        console.log('El usuario ha hecho clic en Aceptar');
+                        document.location = "?menu=test&rol=" + rol;
+                    }
                 })
 
             // Borra el elemento con la clave "respuestas" del localStorage
             // localStorage.removeItem("respuestas");
-
         })
 
         //timer
         // Establece el tiempo inicial a 30 minutos (en segundos)
         var tiempoRestante = 30 * 60;
+
 
         // Obtén la referencia al elemento con la clase "timer"
         var timerElement = document.querySelector('.timer');
@@ -304,7 +263,7 @@ window.addEventListener("load", function () {
                 timerElement.textContent = 'FIN';
 
                 ejecutarAlTerminar();
-                btnFinalizar.click();
+
             }
         }
 
@@ -314,6 +273,7 @@ window.addEventListener("load", function () {
         // Función para ejecutar cuando el temporizador llega a cero
         function ejecutarAlTerminar() {
             alert('¡El tiempo se ha acabado!');
+            document.location = "?menu=test&rol=" + rol;
         }
 
 
