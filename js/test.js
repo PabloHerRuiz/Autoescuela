@@ -294,6 +294,7 @@ window.addEventListener("load", function () {
                     })
                         .then(x => x.text())
                         .then(y => {
+                            alert("examen creado");
                             console.log(y);
                         })
                 });
